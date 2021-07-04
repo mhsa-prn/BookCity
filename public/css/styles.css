@@ -1,0 +1,6 @@
+.mega-menu .tg-themetabnav li a:before {
+    content: '' !important;
+}
+input {
+    text-transform: lowercase !important;
+}
