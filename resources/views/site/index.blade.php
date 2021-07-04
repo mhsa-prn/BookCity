@@ -75,7 +75,7 @@
                                 <div class="tg-status">
                                     <div class="tg-statuscontent">
                                         <span class="tg-statusicon"><i class="icon-book"></i></span>
-                                        <h2>تعداد کتاب‌ها<span>24,179,213</span></h2>
+                                        <h2>تعداد کتاب‌ها<span>{{$book_count}}</span></h2>
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +137,7 @@
                                                 <div class="tg-backcover"><img src="{{$book->image}}"
                                                                                alt="image description"></div>
                                             </div>
-                                            <a class="tg-btnaddtowishlist" href="javascript:void(0);">
+                                            <a class="tg-btnaddtowishlist" href={{Route('addBookmark',$book->id)}}>
                                                 <i class="icon-heart"></i>
                                                 <span>افزودن به علاقه‌مندی‌ها</span>
                                             </a>

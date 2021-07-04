@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Session;
 
 class Basket
 {
+
     public static function add($book)
     {
         $old_basket = [];
@@ -16,6 +17,7 @@ class Basket
         if (session()->has('my_basket')) {
             $old_basket = session()->get('my_basket');
         }
+
         $basket = $old_basket;
 
         if (isset($basket[$book->id])) {
@@ -25,15 +27,29 @@ class Basket
             $basket[$book->id] = [
                 'id' => $book->id,
                 'title' => $book->title,
-                'image' => '/',
+                'image' => $book->image,
                 'count' => 1,
                 'price' => $book->price
             ];
         }
 
-        session(['my_basket' => $basket]);
+        $total_price = 0;
+        $total_count = 0;
 
-       //Add to db
+
+        foreach ($basket as $item) {
+            $total_price += $item['price'] * $item['count'];
+            $total_count += $item['count'];
+        }
+
+        session(['my_basket' => $basket,
+            'my_basket_total_info'=>compact('total_price','total_count')]);
+
+
+
+
+        //session([''my_basket_total_info' => compact('total_count', 'total_price')]);
+        //Add to db
 
         //Basket::create([
         //'basket'=> json_encode($basket),
@@ -45,6 +61,13 @@ class Basket
 
     public static function remove($book_id)
     {
+
+    }
+
+    public static function destroy()
+    {
+        session()->forget('my_basket_total_info');
+        session()->forget('my_basket');
 
     }
 }

@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/color.css">
     <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
 <body class="tg-home tg-homeone">
@@ -41,7 +42,11 @@
 
             Header Start
     *************************************-->
-
+{{--    @if (session()->get('success'))--}}
+{{--        <div class="alert alert-success text-center">--}}
+{{--            {{session()->get('success')}}--}}
+{{--        </div>--}}
+{{--    @endif--}}
     <header id="tg-header" class="tg-header tg-haslayout">
         <div class="tg-topbar">
             <div class="container">
@@ -49,21 +54,15 @@
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <ul class="tg-addnav">
                             <li>
-                                <a href="javascript:void(0);">
+                                <a href={{Route('contactUs')}}>
                                     <i class="icon-envelope"></i>
                                     <em>ارتباط با ما</em>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);">
-                                    <i class="icon-question-circle"></i>
-                                    <em>راهنمایی</em>
                                 </a>
                             </li>
                         </ul>
 
                         <div class="tg-userlogin">
-                            <figure><a href="javascript:void(0);"><img src="images/users/img-01.jpg"
+                            <figure><a href="javascript:void(0);"><img src="/images/users/img-01.jpg"
                                                                        alt="image description"></a></figure>
                             <span>سلام، ملانی</span>
                         </div>
@@ -75,13 +74,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <strong class="tg-logo"><a href="index-2.html"><img src="images/logo.png"
+                        <strong class="tg-logo"><a href="index-2.html"><img src="/images/logo.png"
                                                                             alt="company name here"></a></strong>
                         <div class="tg-wishlistandcart">
                             <div class="dropdown tg-themedropdown tg-wishlistdropdown">
                                 <a href="javascript:void(0);" id="tg-wishlisst" class="tg-btnthemedropdown"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="tg-themebadge">{{session()->get('my_basket') ? count(session()->get('my_basket')): 0}}</span>
+                                    <span class="tg-themebadge">4</span>
                                     <i class="icon-heart"></i>
                                     <span>علاقه‌مندی‌ها</span>
                                 </a>
@@ -92,36 +91,41 @@
                             <div class="dropdown tg-themedropdown tg-minicartdropdown">
                                 <a href="javascript:void(0);" id="tg-minicart" class="tg-btnthemedropdown"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="tg-themebadge">3</span>
+                                    <span
+                                        class="tg-themebadge">{{session()->get('my_basket_total_info') ? session()->get('my_basket_total_info')['total_count'] :  0}}</span>
                                     <i class="icon-cart"></i>
-                                    <span>123000 تومان</span>
+                                    <span>{{session()->get('my_basket_total_info') ? session()->get('my_basket_total_info')['total_price'] :  0}} تومان</span>
                                 </a>
                                 <div class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-minicart">
                                     <div class="tg-minicartbody">
                                         @if(session()->get('my_basket'))
-                                        @foreach(session()->get('my_basket') as $basket)
-                                        <div class="tg-minicarproduct">
-                                            <figure>
-                                                <img src={{$basket['image']}} alt="image description">
+                                            @foreach(session()->get('my_basket') as $basket)
+                                                <div class="tg-minicarproduct">
+                                                    <figure>
+                                                        <img src={{$basket['image']}} alt="image" width="70"
+                                                             height="70">
 
-                                            </figure>
-                                            <div class="tg-minicarproductdata">
-                                                <h5><a href="javascript:void(0);">{{$basket['title']}}</a></h5>
-                                                <h6><a href="javascript:void(0);">{{$basket['price']}} تومان</a></h6>
-                                            </div>
-                                        </div>
-                                        @endforeach
-                                            @endif
+                                                    </figure>
+                                                    <div class="tg-minicarproductdata">
+                                                        <h5><a href="javascript:void(0);">{{$basket['title']}}
+                                                                (تعداد: {{$basket['count']}}</a></h5>
+                                                        <h6><a href="javascript:void(0);">{{$basket['price']}} تومان</a>
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @endif
+
                                     </div>
                                     <div class="tg-minicartfoot">
-                                        <a class="tg-btnemptycart" href="javascript:void(0);">
+                                        <a class="tg-btnemptycart" href={{Route('destroyBasket')}}>
                                             <i class="fa fa-trash-o"></i>
                                             <span>پاک کردن سبد</span>
                                         </a>
-                                        <span class="tg-subtotal">جمع کل:<strong>3578000 تومان</strong></span>
+                                        <span class="tg-subtotal">جمع کل: <strong>{{session()->get('my_basket_total_info') ? session()->get('my_basket_total_info')['total_price'] :  0}} تومان</strong></span>
                                         <div class="tg-btns">
                                             <a class="tg-btn tg-active" href="javascript:void(0);">مشاهده سبد خرید</a>
-                                            <a class="tg-btn" href="javascript:void(0);">ادامه خرید</a>
+
                                         </div>
                                     </div>
                                 </div>
@@ -160,19 +164,26 @@
                                     <li class="menu-item-has-children menu-item-has-mega-menu">
                                         <a href="javascript:void(0);">دسته‌بندی‌ها</a>
                                         <div class="mega-menu">
-                                            <ul class="tg-themetabnav" >
-                                                <li role="presentation" class="active">
-                                                    <a href="#artandphotography" aria-controls="artandphotography" role="tab" data-toggle="tab">هنر و عکاسی</a>
-                                                </li>
+
+                                            <ul class="tg-themetabnav">
+                                                @foreach($categories as $category)
+                                                    <li role="presentation" class="">
+                                                        <a href="#artandphotography" aria-controls="artandphotography"
+                                                           role="tab" data-toggle="tab">
+                                                            {{$category->title}}
+                                                        </a>
+                                                    </li>
+                                                @endforeach
                                             </ul>
+
                                             <div class="tab-content tg-themetabcontent">
                                                 <div role="tabpanel" class="tab-pane active" id="artandphotography">
                                                     <ul>
                                                         <li>
-                                                            <figure><img src="images/img-01.png"
+                                                            <figure><img src="/images/img-01.png"
                                                                          alt="image description"></figure>
                                                             <div class="tg-textbox">
-                                                                <h3>بیشتر از<span>12,0657,53</span>کالکشن کتاب</h3>
+                                                                <h3>بیشتر از<span>7</span>کالکشن کتاب</h3>
                                                                 <div class="tg-description">
                                                                     <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
                                                                         صنعت چاپ و متون بلکه روزنامه و مجله در ستون و
@@ -228,7 +239,7 @@
                                                     </ul>
                                                     <ul>
                                                         <li>
-                                                            <figure><img src="images/img-01.png"
+                                                            <figure><img src="/images/img-01.png"
                                                                          alt="image description"></figure>
                                                             <div class="tg-textbox">
                                                                 <h3>بیشتر از<span>12,0657,53</span>کالکشن کتاب</h3>
@@ -287,7 +298,7 @@
                                                     </ul>
                                                     <ul>
                                                         <li>
-                                                            <figure><img src="images/img-01.png"
+                                                            <figure><img src="/images/img-01.png"
                                                                          alt="image description"></figure>
                                                             <div class="tg-textbox">
                                                                 <h3>بیشتر از<span>12,0657,53</span>کالکشن کتاب</h3>
@@ -346,7 +357,7 @@
                                                     </ul>
                                                     <ul>
                                                         <li>
-                                                            <figure><img src="images/img-01.png"
+                                                            <figure><img src="/images/img-01.png"
                                                                          alt="image description"></figure>
                                                             <div class="tg-textbox">
                                                                 <h3>بیشتر از<span>12,0657,53</span>کالکشن کتاب</h3>
@@ -405,7 +416,7 @@
                                                     </ul>
                                                     <ul>
                                                         <li>
-                                                            <figure><img src="images/img-01.png"
+                                                            <figure><img src="/images/img-01.png"
                                                                          alt="image description"></figure>
                                                             <div class="tg-textbox">
                                                                 <h3>بیشتر از<span>12,0657,53</span>کالکشن کتاب</h3>
@@ -464,7 +475,7 @@
                                                     </ul>
                                                     <ul>
                                                         <li>
-                                                            <figure><img src="images/img-01.png"
+                                                            <figure><img src="/images/img-01.png"
                                                                          alt="image description"></figure>
                                                             <div class="tg-textbox">
                                                                 <h3>بیشتر از<span>12,0657,53</span>کالکشن کتاب</h3>
@@ -523,7 +534,7 @@
                                                     </ul>
                                                     <ul>
                                                         <li>
-                                                            <figure><img src="images/img-01.png"
+                                                            <figure><img src="/images/img-01.png"
                                                                          alt="image description"></figure>
                                                             <div class="tg-textbox">
                                                                 <h3>بیشتر از<span>12,0657,53</span>کالکشن کتاب</h3>
@@ -582,7 +593,7 @@
                                                     </ul>
                                                     <ul>
                                                         <li>
-                                                            <figure><img src="images/img-01.png"
+                                                            <figure><img src="/images/img-01.png"
                                                                          alt="image description"></figure>
                                                             <div class="tg-textbox">
                                                                 <h3>بیشتر از<span>12,0657,53</span>کالکشن کتاب</h3>
@@ -641,7 +652,7 @@
                                                     </ul>
                                                     <ul>
                                                         <li>
-                                                            <figure><img src="images/img-01.png"
+                                                            <figure><img src="/images/img-01.png"
                                                                          alt="image description"></figure>
                                                             <div class="tg-textbox">
                                                                 <h3>بیشتر از<span>12,0657,53</span>کالکشن کتاب</h3>
@@ -700,7 +711,7 @@
                                                     </ul>
                                                     <ul>
                                                         <li>
-                                                            <figure><img src="images/img-01.png"
+                                                            <figure><img src="/images/img-01.png"
                                                                          alt="image description"></figure>
                                                             <div class="tg-textbox">
                                                                 <h3>بیشتر از<span>12,0657,53</span>کالکشن کتاب</h3>
@@ -717,8 +728,8 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="current-menu-item">
-                                        <a href="javascript:void(0);">خانه</a>
+                                    <li class="">
+                                        <a href={{Route('home')}}>خانه</a>
                                     </li>
                                     <li class="">
                                         <a href="javascript:void(0);">نویسندگان</a>
@@ -729,8 +740,9 @@
                                     </li>
                                     <li><a href="products.html">پرفروش ترین</a></li>
 
+                                    <li><a href={{Route('contactUs')}}>ارتباط با ما</a></li>
 
-                                    <li><a href="contactus.html">ارتباط با ما</a></li>
+
                                     <li class="menu-item-has-children current-menu-item">
                                         <a href="javascript:void(0);"><i class="icon-menu"></i></a>
                                         <ul class="sub-menu">
@@ -800,7 +812,7 @@
                     <div class="tg-threecolumns">
                         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                             <div class="tg-footercol">
-                                <strong class="tg-logo"><a href="javascript:void(0);"><img src="images/flogo.png"
+                                <strong class="tg-logo"><a href="javascript:void(0);"><img src="/images/flogo.png"
                                                                                            alt="image description"></a></strong>
                                 <ul class="tg-contactinfo">
                                     <li>
@@ -849,7 +861,7 @@
                                         <li><a href="javascript:void(0);">شرایط استفاده</a></li>
                                         <li><a href="javascript:void(0);">شرایط برگشت</a></li>
                                         <li><a href="javascript:void(0);">حریم شخصی</a></li>
-                                        <li><a href="javascript:void(0);">ارتباط با ما</a></li>
+                                        <li><a href={{Route('contactUs')}}>ارتباط با ما</a></li>
                                         <li><a href="javascript:void(0);">شرکت‌های وابسته</a></li>
                                         <li><a href="javascript:void(0);">هدف و بینش</a></li>
                                     </ul>
@@ -868,7 +880,7 @@
                                 <div class="tg-widgetcontent">
                                     <ul>
                                         <li>
-                                            <figure><a href="javascript:void(0);"><img src="images/author/imag-09.jpg"
+                                            <figure><a href="javascript:void(0);"><img src="/images/author/imag-09.jpg"
                                                                                        alt="image description"></a>
                                             </figure>
                                             <div class="tg-authornamebooks">
@@ -877,7 +889,7 @@
                                             </div>
                                         </li>
                                         <li>
-                                            <figure><a href="javascript:void(0);"><img src="images/author/imag-10.jpg"
+                                            <figure><a href="javascript:void(0);"><img src="/images/author/imag-10.jpg"
                                                                                        alt="image description"></a>
                                             </figure>
                                             <div class="tg-authornamebooks">
@@ -886,7 +898,7 @@
                                             </div>
                                         </li>
                                         <li>
-                                            <figure><a href="javascript:void(0);"><img src="images/author/imag-11.jpg"
+                                            <figure><a href="javascript:void(0);"><img src="/images/author/imag-11.jpg"
                                                                                        alt="image description"></a>
                                             </figure>
                                             <div class="tg-authornamebooks">
@@ -909,7 +921,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <span class="tg-paymenttype"><img src="images/paymenticon.png" alt="image description"></span>
+                        <span class="tg-paymenttype"><img src="/images/paymenticon.png" alt="image description"></span>
                         <span class="tg-copyright">1399 - تمامی حقوق محفوظ است</span>
                     </div>
                 </div>
@@ -939,3 +951,4 @@
 
 </html>
 
+@section('homeRoute','<li><a href="javascript:void(0);">خانه</a></li>')
