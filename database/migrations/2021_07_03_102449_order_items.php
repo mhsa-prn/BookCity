@@ -15,6 +15,8 @@ class OrderItems extends Migration
     {
         Schema::create('order_items', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('order_id');
+            $table->foreign('order_id')->on('orders')->references('id')->cascadeOnDelete();
             $table->unsignedBigInteger('book_id');
             $table->foreign('book_id')->on('books')->references('id')->cascadeOnDelete();
             $table->Integer('count');

@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    use HasFactory;
+    const PREPARING = 1;
+    const CANCELED = 2;
+    const SENDING = 3;
+    const DELIVERED = 4;
 }

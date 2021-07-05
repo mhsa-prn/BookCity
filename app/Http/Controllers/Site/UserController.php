@@ -20,7 +20,7 @@ class UserController extends Controller
             'last_name' => 'required|max:100',
             'username' => 'required|max:100',
             'email' => 'required|email|unique:users',
-            'password' => 'password|required|min:8'
+            'password' => 'required|min:8'
         ]);
 
         //store
@@ -45,7 +45,7 @@ class UserController extends Controller
         //validation
         $this->validate($request, [
             'email' => 'required|email',
-            'password' => 'password|required|min:8'
+            'password' => 'required|min:8'
         ]);
 
 

@@ -16,6 +16,7 @@ class CreatePaymentsTable extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('order_id');
+            $table->string('authority');
             $table->foreign('order_id')->on('orders')->references('id')->cascadeOnDelete();
             $table->tinyInteger('status');
             $table->timestamps();

@@ -39,10 +39,12 @@ Route::get('/destroy-Cart', [\App\Http\Controllers\Site\CartController::class, '
 Route::get('/cart',[\App\Http\Controllers\Site\CartController::class,'index'])->name('cart');
 Route::get('/carts/{item}',[\App\Http\Controllers\Site\CartController::class,'removeItem'])->name('removeItem');
 Route::get('/increase-count/{id}',[\App\Http\Controllers\Site\CartController::class,'increaseCount'])->name('increaseCartCount');
-Route::get('/decrease_count',[\App\Http\Controllers\Site\CartController::class,'decreaseCount'])->name('decreaseCartCount');
+Route::get('/decrease_count/{id}',[\App\Http\Controllers\Site\CartController::class,'decreaseCount'])->name('decreaseCartCount');
 //Auth::routes();
 
 Route::get('/payment',[\App\Http\Controllers\PaymentController::class, 'payment'])->name('payment');
+Route::get('/payment/verify',[\App\Http\Controllers\PaymentController::class, 'verify'])->name('payment_verify');
+Route::get('/user/panel',[\App\Http\Controllers\User\IndexController::class, 'index'])->name('index');
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::middleware('auth:web')->get('/test', function () {

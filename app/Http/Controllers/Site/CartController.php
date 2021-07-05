@@ -37,6 +37,11 @@ class CartController extends Controller
         Cart::addToCartCount($id);
         return back();
     }
-    //redirect(route('cart'));
 
+
+    public function decreaseCount($id)
+    {
+        Cart::removeCartCount($id);
+        return back();
+    }
 }

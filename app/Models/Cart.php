@@ -79,6 +79,22 @@ class Cart
 
     }
 
+    public static function removeCartCount($id)
+    {
+        $basket = session()->get('my_cart');
+
+        $basket[$id]['count'] = $basket[$id]['count'] - 1;
+
+        session(['my_cart' => $basket]);
+
+        $count = session()->get('my_cart')[$id]['count'] += 1;
+
+        session()->get('my_cart')['count'] = $count;
+
+        self::updateCount($basket);
+
+    }
+
 
     public static function updateCount($basket)
     {

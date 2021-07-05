@@ -65,9 +65,9 @@
 
 
                                         <td>
-                                            <div class="input-group bootstrap-touchspin"><span class="input-group-btn"><button
+                                            <div class="input-group bootstrap-touchspin"><span class="input-group-btn"><a
                                                         class="btn btn-default bootstrap-touchspin-down"
-                                                        type="button">-</button></span><span
+                                                        href="{{route('decreaseCartCount',$item['id'])}}">-</a></span><span
                                                     class="input-group-addon bootstrap-touchspin-prefix"
                                                     style="display: none;"></span><input type="text" name=""
                                                                                          value={{$item['count']}} class="input-qty
@@ -99,15 +99,22 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div class="btn-group btns-cart">
+                            <a href="{{route('payment')}}" class="btn btn-success"><i class="fa fa-arrow-circle-left"></i> تکمیل
+                                فرآیند خرید
+                            </a>
+                            <br>
+                        </div>
                     @else
                         <h4 class="text-center alert alert-danger">سبد خرید خالی است.</h4>
+                        <div class="btn-group btns-cart">
+                            <a href="{{route('payment')}}" class="disabled btn btn-danger "><i class="fa fa-arrow-circle-left"></i> تکمیل
+                                فرآیند خرید
+                            </a>
+                            <br>
+                        </div>
                     @endif
-                    <div class="btn-group btns-cart">
-                        <a href="{{route('payment')}}" class="btn btn-success"><i class="fa fa-arrow-circle-left"></i> تکمیل
-                            فرآیند خرید
-                        </a>
-                        <br>
-                    </div>
+
 
 
                 </div>
