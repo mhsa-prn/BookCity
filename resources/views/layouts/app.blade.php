@@ -92,24 +92,24 @@
                                 <a href="javascript:void(0);" id="tg-minicart" class="tg-btnthemedropdown"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span
-                                        class="tg-themebadge">{{session()->get('my_basket_total_info') ? session()->get('my_basket_total_info')['total_count'] :  0}}</span>
+                                        class="tg-themebadge">{{session()->get('my_cart_total_info') ? session()->get('my_cart_total_info')['total_count'] :  0}}</span>
                                     <i class="icon-cart"></i>
-                                    <span>{{session()->get('my_basket_total_info') ? session()->get('my_basket_total_info')['total_price'] :  0}} تومان</span>
+                                    <span>{{session()->get('my_cart_total_info') ? session()->get('my_cart_total_info')['total_price'] :  0}} تومان</span>
                                 </a>
                                 <div class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-minicart">
                                     <div class="tg-minicartbody">
-                                        @if(session()->get('my_basket'))
-                                            @foreach(session()->get('my_basket') as $basket)
+                                        @if(session()->get('my_cart'))
+                                            @foreach(session()->get('my_cart') as $Cart)
                                                 <div class="tg-minicarproduct">
                                                     <figure>
-                                                        <img src={{$basket['image']}} alt="image" width="70"
+                                                        <img src={{$Cart['image']}} alt="image" width="70"
                                                              height="70">
 
                                                     </figure>
                                                     <div class="tg-minicarproductdata">
-                                                        <h5><a href="javascript:void(0);">{{$basket['title']}}
-                                                                (تعداد: {{$basket['count']}}</a></h5>
-                                                        <h6><a href="javascript:void(0);">{{$basket['price']}} تومان</a>
+                                                        <h5><a href="javascript:void(0);">{{$Cart['title']}}
+                                                                (تعداد: {{$Cart['count']}})</a></h5>
+                                                        <h6><a href="javascript:void(0);">{{$Cart['price']}} تومان</a>
                                                         </h6>
                                                     </div>
                                                 </div>
@@ -118,13 +118,13 @@
 
                                     </div>
                                     <div class="tg-minicartfoot">
-                                        <a class="tg-btnemptycart" href={{Route('destroyBasket')}}>
+                                        <a class="tg-btnemptycart" href={{Route('destroyCart')}}>
                                             <i class="fa fa-trash-o"></i>
                                             <span>پاک کردن سبد</span>
                                         </a>
-                                        <span class="tg-subtotal">جمع کل: <strong>{{session()->get('my_basket_total_info') ? session()->get('my_basket_total_info')['total_price'] :  0}} تومان</strong></span>
+                                        <span class="tg-subtotal">جمع کل: <strong>{{session()->get('my_cart_total_info') ? session()->get('my_cart_total_info')['total_price'] :  0}} تومان</strong></span>
                                         <div class="tg-btns">
-                                            <a class="tg-btn tg-active" href="javascript:void(0);">مشاهده سبد خرید</a>
+                                            <a class="tg-btn tg-active" href={{route('cart')}}>مشاهده سبد خرید</a>
 
                                         </div>
                                     </div>

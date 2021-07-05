@@ -18,8 +18,7 @@ Route::get('/contactus', [\App\Http\Controllers\Site\ContactUsController::class,
 
 Route::get('/search', [\App\Http\Controllers\Site\SiteController::class, 'search']);
 
-Route::get('/add-to-basket/{id}', [\App\Http\Controllers\Site\SiteController::class, 'addToBasket']);
-Route::get('/destroy-basket', [\App\Http\Controllers\Site\SiteController::class, 'destroyBasket'])->name('destroyBasket');
+
 
 Route::get('/authors',[\App\Http\Controllers\Site\AuthorController::class,'authors'])->name('authorsList');
 
@@ -35,7 +34,15 @@ Route::get('/users/register',[\App\Http\Controllers\Site\UserController::class,'
 Route::post('/users/login',[\App\Http\Controllers\Site\UserController::class,'login']);
 Route::get('/users/login',[\App\Http\Controllers\Site\UserController::class,'loginForm']);
 
+Route::get('/add-to-Cart/{id}', [\App\Http\Controllers\Site\CartController::class, 'addToCart']);
+Route::get('/destroy-Cart', [\App\Http\Controllers\Site\CartController::class, 'destroyCart'])->name('destroyCart');
+Route::get('/cart',[\App\Http\Controllers\Site\CartController::class,'index'])->name('cart');
+Route::get('/carts/{item}',[\App\Http\Controllers\Site\CartController::class,'removeItem'])->name('removeItem');
+Route::get('/increase-count/{id}',[\App\Http\Controllers\Site\CartController::class,'increaseCount'])->name('increaseCartCount');
+Route::get('/decrease_count',[\App\Http\Controllers\Site\CartController::class,'decreaseCount'])->name('decreaseCartCount');
 //Auth::routes();
+
+Route::get('/payment',[\App\Http\Controllers\PaymentController::class, 'payment'])->name('payment');
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::middleware('auth:web')->get('/test', function () {

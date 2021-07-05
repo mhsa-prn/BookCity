@@ -47,15 +47,5 @@ class SiteController extends Controller
     }
 
 
-    //Basket part
-    public function addToBasket($id)
-    {
-        Basket::add(Book::find($id));
-        return back();
-    }
 
-    public function destroyBasket(){
-        Basket::destroy();
-        return back();
-    }
 }

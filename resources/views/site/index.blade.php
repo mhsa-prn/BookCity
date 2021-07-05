@@ -158,8 +158,8 @@
 												<ins>{{$book->price}} تومان</ins>
 												<del>23000 تومان</del>
 											</span>
-                                            <a class="tg-btn tg-btnstyletwo" href="/add-to-basket/{{$book->id}}">
-                                                <i class="fa fa-shopping-basket"></i>
+                                            <a class="tg-btn tg-btnstyletwo" href="/add-to-Cart/{{$book->id}}">
+                                                <i class="fa fa-shopping-Cart"></i>
                                                 <em>افزودن به سبدخرید</em>
                                             </a>
                                         </div>
@@ -197,8 +197,8 @@
 											<ins>230 تومان</ins>
 											<del>302 تومان</del>
 										</span>
-                                    <a class="tg-btn tg-btnstyletwo tg-active" href="javascript:void(0);">
-                                        <i class="fa fa-shopping-basket"></i>
+                                    <a class="tg-btn tg-btnstyletwo tg-active" href="/add-to-Cart/{{$book->id}}">
+                                        <i class="fa fa-shopping-Cart"></i>
                                         <em>افزودن به سبدخرید</em>
                                     </a>
                                 </div>
@@ -394,7 +394,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="tg-sectionhead">
                             <h2><span>بهترین کتاب ها</span>کتاب های پیشنهادی</h2>
-                            <a class="tg-btn" href="javascript:void(0);">مشاهده همه</a>
+{{--                            <a class="tg-btn" href="javascript:void(0);">مشاهده همه</a>--}}
                         </div>
                     </div>
                     <div id="tg-pickedbyauthorslider" class="tg-pickedbyauthor tg-pickedbyauthorslider owl-carousel">
@@ -422,131 +422,9 @@
                                     </div>
                                     <span class="tg-bookwriter">توسط: <a
                                             href="javascript:void(0);">سوزان اورلاندو</a></span>
-                                    <a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
-                                        <i class="fa fa-shopping-basket"></i>
-                                        <em>افزودن به سبدخرید</em>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="tg-postbook">
-                                <figure class="tg-featureimg">
-                                    <div class="tg-bookimg">
-                                        <div class="tg-frontcover"><img src="images/books/img-11.jpg"
-                                                                        alt="image description"></div>
-                                    </div>
-                                    <div class="tg-hovercontent">
-                                        <div class="tg-description">
-                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                                                طراحان گرافیک است. </p>
-                                        </div>
-                                        <strong class="tg-bookpage">صفحات: 206</strong>
-                                        <strong class="tg-bookcategory">دسته بندی: ماجراجویی، سرگرمی</strong>
-                                        <strong class="tg-bookprice">قیمت: 231800 تومان</strong>
-                                        <div class="tg-ratingbox"><span class="tg-stars"><span></span></span></div>
-                                    </div>
-                                </figure>
-                                <div class="tg-postbookcontent">
-                                    <div class="tg-booktitle">
-                                        <h3><a href="javascript:void(0);">آرام و قوی ادامه بده</a></h3>
-                                    </div>
-                                    <span class="tg-bookwriter">توسط: <a href="javascript:void(0);">دورسیلا گلاندون</a></span>
-                                    <a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
-                                        <i class="fa fa-shopping-basket"></i>
-                                        <em>افزودن به سبدخرید</em>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="tg-postbook">
-                                <figure class="tg-featureimg">
-                                    <div class="tg-bookimg">
-                                        <div class="tg-frontcover"><img src="images/books/img-12.jpg"
-                                                                        alt="image description"></div>
-                                    </div>
-                                    <div class="tg-hovercontent">
-                                        <div class="tg-description">
-                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                                                طراحان گرافیک است. </p>
-                                        </div>
-                                        <strong class="tg-bookpage">صفحات: 206</strong>
-                                        <strong class="tg-bookcategory">دسته بندی: ماجراجویی، سرگرمی</strong>
-                                        <strong class="tg-bookprice">قیمت: 231800 تومان</strong>
-                                        <div class="tg-ratingbox"><span class="tg-stars"><span></span></span></div>
-                                    </div>
-                                </figure>
-                                <div class="tg-postbookcontent">
-                                    <div class="tg-booktitle">
-                                        <h3><a href="javascript:void(0);">جز حالا هیچ وقتی نداری</a></h3>
-                                    </div>
-                                    <span class="tg-bookwriter">توسط: <a
-                                            href="javascript:void(0);">پاتریک سلر</a></span>
-                                    <a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
-                                        <i class="fa fa-shopping-basket"></i>
-                                        <em>افزودن به سبدخرید</em>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="tg-postbook">
-                                <figure class="tg-featureimg">
-                                    <div class="tg-bookimg">
-                                        <div class="tg-frontcover"><img src="images/books/img-10.jpg"
-                                                                        alt="image description"></div>
-                                    </div>
-                                    <div class="tg-hovercontent">
-                                        <div class="tg-description">
-                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                                                طراحان گرافیک است. </p>
-                                        </div>
-                                        <strong class="tg-bookpage">صفحات: 206</strong>
-                                        <strong class="tg-bookcategory">دسته بندی: ماجراجویی، سرگرمی</strong>
-                                        <strong class="tg-bookprice">قیمت: 231800 تومان</strong>
-                                        <div class="tg-ratingbox"><span class="tg-stars"><span></span></span></div>
-                                    </div>
-                                </figure>
-                                <div class="tg-postbookcontent">
-                                    <div class="tg-booktitle">
-                                        <h3><a href="javascript:void(0);">هفت دقیقه در بهشت</a></h3>
-                                    </div>
-                                    <span class="tg-bookwriter">توسط: <a
-                                            href="javascript:void(0);">سوزان اورلاندو</a></span>
-                                    <a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
-                                        <i class="fa fa-shopping-basket"></i>
-                                        <em>افزودن به سبدخرید</em>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="tg-postbook">
-                                <figure class="tg-featureimg">
-                                    <div class="tg-bookimg">
-                                        <div class="tg-frontcover"><img src="images/books/img-11.jpg"
-                                                                        alt="image description"></div>
-                                    </div>
-                                    <div class="tg-hovercontent">
-                                        <div class="tg-description">
-                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                                                طراحان گرافیک است. </p>
-                                        </div>
-                                        <strong class="tg-bookpage">صفحات: 206</strong>
-                                        <strong class="tg-bookcategory">دسته بندی: ماجراجویی، سرگرمی</strong>
-                                        <strong class="tg-bookprice">قیمت: 231800 تومان</strong>
-                                        <div class="tg-ratingbox"><span class="tg-stars"><span></span></span></div>
-                                    </div>
-                                </figure>
-                                <div class="tg-postbookcontent">
-                                    <div class="tg-booktitle">
-                                        <h3><a href="javascript:void(0);">آرام و قوی ادامه بده</a></h3>
-                                    </div>
-                                    <span class="tg-bookwriter">توسط: <a href="javascript:void(0);">دورسیلا گلاندون</a></span>
-                                    <a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
-                                        <i class="fa fa-shopping-basket"></i>
-                                        <em>افزودن به سبدخرید</em>
+                                    <a class="tg-btn tg-btnstyletwo" href="/add-to-Cart/{{$book->id}}">
+                                        <i class="fa fa-shopping-Cart"></i>
+                                        <em>افزودن به سبد خرید</em>
                                     </a>
                                 </div>
                             </div>
