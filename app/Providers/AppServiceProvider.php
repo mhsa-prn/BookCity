@@ -29,9 +29,10 @@ class AppServiceProvider extends ServiceProvider
         // Load categories for layout
 
         View::composer('layouts.app', function ($view) {
+            $category_count=Category::count();
             $categories = Category::all();
             $bookmarks_count = Bookmark::where('user_id', auth()->id())->count();
-            $view->with(compact('categories', 'bookmarks_count'));
+            $view->with(compact('categories', 'bookmarks_count','category_count'));
         });
     }
 }

@@ -7,6 +7,7 @@ use App\Models\Basket;
 use App\Models\Book;
 use App\Models\Bookmark;
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -19,7 +20,8 @@ class SiteController extends Controller
         //counts
         $user_count = User::count();
         $book_count=Book::count();
-        $bookmarks_count = Bookmark::with('books')->where('user_id', auth()->id())->count();
+
+        $order_count=Order::count();
 
         //categories
         $categories=Category::all();
@@ -29,9 +31,10 @@ class SiteController extends Controller
 
         return view('site.index', compact('user_count','book_count',
             'books',
-            'categories'));
+            'categories',
+            'order_count'));
 
-        
+
     }
 
 

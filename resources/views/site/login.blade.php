@@ -26,10 +26,12 @@
                                 <fieldset>
 
                                     <div class="form-group">
+                                        ایمیل:
                                         <input type="text" name="email" class="form-control" placeholder=" ایمیل * "
                                                value="{{old('email')}}">
                                     </div>
                                     <div class="form-group">
+                                        کلمه عبور:
                                         <input type="password" name="password" class="form-control" placeholder=" کلمه عبور * ">
                                     </div>
                                     <div class="form-group">

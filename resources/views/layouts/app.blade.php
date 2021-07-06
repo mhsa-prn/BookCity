@@ -75,6 +75,10 @@
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <strong class="tg-logo"><a href="index-2.html"><img src="/images/logo.png"
                                                                             alt="company name here"></a></strong>
+
+
+
+                        @if(auth()->check())
                         <div class="tg-wishlistandcart">
                             <div class="dropdown tg-themedropdown tg-wishlistdropdown">
                                 <a href="{{route('bookmarks')}}" id="tg-wishlisst" class="tg-btnthemedropdown">
@@ -101,7 +105,6 @@
                                                     <figure>
                                                         <img src={{$Cart['image']}} alt="image" width="70"
                                                              height="70">
-
                                                     </figure>
                                                     <div class="tg-minicarproductdata">
                                                         <h5><a href="javascript:void(0);">{{$Cart['title']}}
@@ -128,6 +131,28 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         <div class="tg-searchbox">
                             <form action="/search" class="tg-formtheme tg-formsearch">
                                 <fieldset>
@@ -141,6 +166,32 @@
                     </div>
                 </div>
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </div>
         <div class="tg-navigationarea">
             <div class="container">
@@ -180,13 +231,13 @@
                                                             <figure><img src="/images/img-01.png"
                                                                          alt="image description"></figure>
                                                             <div class="tg-textbox">
-                                                                <h3>بیشتر از<span>7</span>کالکشن کتاب</h3>
+                                                                <h3>بیشتر از<span>{{$category_count}}</span>کالکشن کتاب</h3>
                                                                 <div class="tg-description">
                                                                     <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
                                                                         صنعت چاپ و متون بلکه روزنامه و مجله در ستون و
                                                                         سطرآنچنان که لازم است</p>
                                                                 </div>
-                                                                <a class="tg-btn" href="products.html">مشاهده همه</a>
+
                                                             </div>
                                                         </li>
                                                     </ul>

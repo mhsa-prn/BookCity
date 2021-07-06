@@ -25,22 +25,27 @@
                                 {{@csrf_field()}}
                                 <fieldset>
                                     <div class="form-group">
+                                        نام:
                                         <input type="text" name="first_name" class="form-control" placeholder="نام * "
                                                value="{{old('first_name')}}">
                                     </div>
                                     <div class="form-group">
+                                        نام خانوادگی:
                                         <input type="text" name="last_name" class="form-control"
                                                placeholder=" نام خانوادگی * " value="{{old('last_name')}}">
                                     </div>
                                     <div class="form-group">
+                                        نام کاربری:
                                         <input type="text" name="username" class="form-control"
                                                placeholder=" نام کاربری * " value="{{old('username')}}">
                                     </div>
                                     <div class="form-group">
+                                        ایمیل:
                                         <input type="text" name="email" class="form-control" placeholder=" ایمیل * "
                                                value="{{old('email')}}">
                                     </div>
                                     <div class="form-group">
+                                        کلمه عبور:
                                         <input type="password" name="password" class="form-control"
                                                placeholder=" کلمه عبور * ">
                                     </div>

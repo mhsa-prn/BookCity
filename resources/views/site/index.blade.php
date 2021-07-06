@@ -99,7 +99,7 @@
                                 <div class="tg-status">
                                     <div class="tg-statuscontent">
                                         <span class="tg-statusicon"><i class="icon-heart"></i></span>
-                                        <h2>تعداد خریداران خوشحال<span>1,267,539</span></h2>
+                                        <h2>تعداد سفارشات موفق<span>{{$order_count}}</span></h2>
                                     </div>
                                 </div>
                             </div>
@@ -120,8 +120,16 @@
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="tg-sectionhead">
                             <h2><span>به انتخاب مردم</span>پرفروش‌ترین‌ها</h2>
+
                             <a class="tg-btn" href="javascript:void(0);">مشاهده همه</a>
                         </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    @if (session()->get('bookmark'))
+                        <div class="alert alert-success text-center">
+                            {{session()->get('bookmark')}}
+                        </div>
+                    @endif
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div id="tg-bestsellingbooksslider"

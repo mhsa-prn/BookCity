@@ -56,7 +56,7 @@ Route::get('/decrease_count/{id}',[\App\Http\Controllers\Site\CartController::cl
 //============================Payment routes=======================
 Route::get('/payment',[\App\Http\Controllers\PaymentController::class, 'payment'])->name('payment');
 Route::get('/payment/verify',[\App\Http\Controllers\PaymentController::class, 'verify'])->name('payment_verify');
-//Route::get('/user/panel',[\App\Http\Controllers\User\IndexController::class, 'index'])->name('index');
+Route::get('/user/panel',[\App\Http\Controllers\User\IndexController::class, 'index'])->name('index');
 //==========================payment routes==========================
 
 

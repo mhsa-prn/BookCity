@@ -147,7 +147,7 @@
 .icon-books:before { content: '\e97c'; }
 .icon-library:before { content: '\e97d'; }
 .icon-file-text:before { content: '\e97e'; }
-.icon-profile:before { content: '\e97f'; }
+/*.icon-profile:before { content: '\e97f'; }*/
 .icon-file-empty:before { content: '\e980'; }
 .icon-files-empty:before { content: '\e981'; }
 .icon-file-text2:before { content: '\e982'; }
