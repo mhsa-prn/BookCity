@@ -54,7 +54,7 @@
             <ul class="navbar-nav flex-row">
                 <!-- Search icon-->
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin/#" >
+                    <a class="nav-link" href="{{route('logout')}}" >
                         <em class="icon-logout"></em>
                     </a>
                 </li>
@@ -79,23 +79,23 @@
                         <span data-localize="sidebar.heading.HEADER">منوی اصلی</span>
                     </li>
                     <li class=" ">
-                        <a href="/admin/#dashboard" title="Dashboard" data-toggle="collapse">
+                        <a href="{{route('user.profile')}}" title="Dashboard" >
                             <em class="icon-user"></em>
-                            <span data-localize="sidebar.nav.DASHBOARD">پروفایل</span>
+                            <span>پروفایل</span>
                         </a>
                     </li>
 
                     <li class=" ">
-                        <a href="/admin/#dashboard" title="Dashboard" data-toggle="collapse">
+                        <a href="{{route('user.orders')}}" title="Dashboard" >
                             <em class="icon-list"></em>
-                            <span data-localize="sidebar.nav.DASHBOARD">لیست سفارشات</span>
+                            <span>لیست سفارشات</span>
                         </a>
                     </li>
 
                     <li class=" ">
-                        <a href="/admin/#dashboard" title="Dashboard" data-toggle="collapse">
+                        <a href="/admin/#dashboard" title="Dashboard">
                             <em class="icon-heart"></em>
-                            <span data-localize="sidebar.nav.DASHBOARD">لیست علاقه‌مندی‌ها</span>
+                            <span>لیست علاقه‌مندی‌ها</span>
                         </a>
                     </li>
 
@@ -455,7 +455,7 @@
         <!-- END Off Sidebar (right)-->
     </aside>
     <!-- Main section-->
-    <section class="section-container">
+    <section class="container">
         <!-- Page content-->
         @yield('user_body')
 

@@ -22,9 +22,9 @@
                             @endif
 
                             <form class="tg-formtheme tg-formcontactus" method="post" action="/users/login">
+
                                 {{@csrf_field()}}
                                 <fieldset>
-
                                     <div class="form-group">
                                         ایمیل:
                                         <input type="text" name="email" class="form-control" placeholder=" ایمیل * "

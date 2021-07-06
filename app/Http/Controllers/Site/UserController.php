@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+
     public function register(Request $request)
     {
         //validation
@@ -49,14 +50,12 @@ class UserController extends Controller
         ]);
 
 
-        $user=null;
-        if (Auth::attempt($request->only(['email','password'])))
-            $user = User::where('email', $request->input('email'))->first();
+        if (Auth::attempt($request->only(['email', 'password']))) {
+            return redirect(route('user.profile'));
 
-        if ($user &&
-            Hash::check($request->input('password'), $user->password)) {
-                redirect(route('home'));
         }
+
+        return back();
     }
 
 
@@ -68,5 +67,8 @@ class UserController extends Controller
     public function logout()
     {
         auth()->logout();
+        return back();
     }
+
+
 }

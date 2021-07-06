@@ -37,9 +37,10 @@ Route::post('/users/register',[\App\Http\Controllers\Site\UserController::class,
 Route::get('/users/register',[\App\Http\Controllers\Site\UserController::class,'registerForm']);
 
 Route::post('/users/login',[\App\Http\Controllers\Site\UserController::class,'login']);
-Route::get('/users/login',[\App\Http\Controllers\Site\UserController::class,'loginForm']);
+Route::get('/users/login',[\App\Http\Controllers\Site\UserController::class,'loginForm'])->name('login');
 
 Route::get('/users/logout',[\App\Http\Controllers\Site\UserController::class,'logout'])->name('logout');
+
 //======================End user routes================================
 
 
@@ -56,7 +57,7 @@ Route::get('/decrease_count/{id}',[\App\Http\Controllers\Site\CartController::cl
 //============================Payment routes=======================
 Route::get('/payment',[\App\Http\Controllers\PaymentController::class, 'payment'])->name('payment');
 Route::get('/payment/verify',[\App\Http\Controllers\PaymentController::class, 'verify'])->name('payment_verify');
-Route::get('/user/panel',[\App\Http\Controllers\User\IndexController::class, 'index'])->name('index');
+//Route::get('/user/panel',[\App\Http\Controllers\User\IndexController::class, 'index'])->name('index');
 //==========================payment routes==========================
 
 
@@ -64,4 +65,13 @@ Route::get('/user/panel',[\App\Http\Controllers\User\IndexController::class, 'in
 Route::middleware('auth:web')->get('/test', function () {
     dd('ok');
 });
+
+
+//========================User Panel routes========================
+Route::middleware('auth:web')->prefix('user')->name('user.')->group(function (){
+    Route::get('/profile',[\App\Http\Controllers\User\ProfileController::class,'showProfile'])->name('profile');
+    Route::get('/orders-list',[\App\Http\Controllers\User\ProfileController::class,'showOrders'])->name('orders');
+});
+
+
 //Auth::routes();
