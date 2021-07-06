@@ -42,8 +42,8 @@
                         @foreach($bookmarks as $bookmarked_book)
                             <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
                                 <div class="tg-author">
-                                    <figure><a href="javascript:void(0);"><img
-                                                src={{$bookmarked_book->books->image}} alt="image description"></a>
+                                    <figure><a href="javascript:void(0);">
+                                            <img src={{$bookmarked_book->books->image}} alt="image"description"></a>
                                     </figure>
                                     <div class="tg-authorcontent">
                                         <h2><a href="javascript:void(0);">{{$bookmarked_book->books->title}}</a></h2>

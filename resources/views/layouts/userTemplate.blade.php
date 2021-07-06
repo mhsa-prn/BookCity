@@ -93,7 +93,7 @@
                     </li>
 
                     <li class=" ">
-                        <a href="/admin/#dashboard" title="Dashboard">
+                        <a href="{{route('user.bookmarks')}}" title="Dashboard">
                             <em class="icon-heart"></em>
                             <span>لیست علاقه‌مندی‌ها</span>
                         </a>
