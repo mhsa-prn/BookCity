@@ -13,28 +13,34 @@ class BookmarkController extends Controller
     {
         //$bookmarks = Bookmark::with('books')->where('user_id', auth()->id())->get();
 
-        $bookmarks = Bookmark::with('books')->where('user_id', 1)->get();
+        $bookmarks = Bookmark::with('books')->where('user_id', auth()->id())->get();
 
-        return view('site.bookmarks',[
-        'bookmarks'=>$bookmarks
+        return view('site.bookmarks', [
+            'bookmarks' => $bookmarks
         ]);
     }
 
     public function add($book_id)
     {
         //$user_id = auth()->id();
-        $user_id = 1;
-        $bookmark = new Bookmark();
-        $bookmark->fill([
-            'user_id' => $user_id,
-            'book_id' => $book_id]);
+        $exist = Bookmark::where('user_id', auth()->id())->where('book_id', $book_id)->first();
+        if (!$exist) {
+            $user_id = auth()->id();;
+            $bookmark = new Bookmark();
+            $bookmark->fill([
+                'user_id' => $user_id,
+                'book_id' => $book_id]);
+            $bookmark->save();
+        }
 
-        $bookmark->save();
+
+        return back();
     }
 
     public function remove()
     {
 
     }
+
 
 }

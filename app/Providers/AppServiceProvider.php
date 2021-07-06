@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Bookmark;
 use App\Models\Category;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -28,7 +29,9 @@ class AppServiceProvider extends ServiceProvider
         // Load categories for layout
 
         View::composer('layouts.app', function ($view) {
-            $view->with('categories', Category::all());
+            $categories = Category::all();
+            $bookmarks_count = Bookmark::where('user_id', auth()->id())->count();
+            $view->with(compact('categories', 'bookmarks_count'));
         });
     }
 }

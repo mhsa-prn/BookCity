@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Payment;
@@ -71,9 +72,15 @@ class PaymentController extends Controller
         $payment->status = $request->get('Status') == 'OK' ? 1 : 0;
         $payment->save();
 
-        // forget cart session
-        //تولدید پیام موفقیت آمیز یا ناموفق
-        //redirect to /payment-result
+        Cart::destroy();
+
+        if ($status=='OK'){
+            session()->flash('OK_payment','پرداخت با موفقیت انجام شد.');
+        }
+        else
+            session()->flash('NOK_payment','پرداخت ناموفق بود.');
+
+        return view('payment');
 
 
 

@@ -64,4 +64,9 @@ class UserController extends Controller
     {
         return view('site.login');
     }
+
+    public function logout()
+    {
+        auth()->logout();
+    }
 }

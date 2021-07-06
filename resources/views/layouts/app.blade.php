@@ -39,14 +39,13 @@
 *************************************-->
 <div id="tg-wrapper" class="tg-wrapper tg-haslayout">
     <!--************************************
-
             Header Start
     *************************************-->
-{{--    @if (session()->get('success'))--}}
-{{--        <div class="alert alert-success text-center">--}}
-{{--            {{session()->get('success')}}--}}
-{{--        </div>--}}
-{{--    @endif--}}
+    @if (session()->get('success'))
+        <div class="alert alert-success text-center">
+            {{session()->get('success')}}
+        </div>
+    @endif
     <header id="tg-header" class="tg-header tg-haslayout">
         <div class="tg-topbar">
             <div class="container">
@@ -78,15 +77,13 @@
                                                                             alt="company name here"></a></strong>
                         <div class="tg-wishlistandcart">
                             <div class="dropdown tg-themedropdown tg-wishlistdropdown">
-                                <a href="javascript:void(0);" id="tg-wishlisst" class="tg-btnthemedropdown"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="tg-themebadge">4</span>
+                                <a href="{{route('bookmarks')}}" id="tg-wishlisst" class="tg-btnthemedropdown">
+
+                                    <span class="tg-themebadge">{{$bookmarks_count}}</span>
                                     <i class="icon-heart"></i>
                                     <span>علاقه‌مندی‌ها</span>
                                 </a>
-                                <div class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-wishlisst">
-                                    <div class="tg-description"><p>هیچ محصولی به علاقه‌مندی‌ها اضافه نشده است.</p></div>
-                                </div>
+
                             </div>
                             <div class="dropdown tg-themedropdown tg-minicartdropdown">
                                 <a href="javascript:void(0);" id="tg-minicart" class="tg-btnthemedropdown"

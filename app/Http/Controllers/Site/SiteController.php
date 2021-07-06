@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use App\Models\Basket;
 use App\Models\Book;
+use App\Models\Bookmark;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,6 +19,7 @@ class SiteController extends Controller
         //counts
         $user_count = User::count();
         $book_count=Book::count();
+        $bookmarks_count = Bookmark::with('books')->where('user_id', auth()->id())->count();
 
         //categories
         $categories=Category::all();
@@ -28,7 +30,10 @@ class SiteController extends Controller
         return view('site.index', compact('user_count','book_count',
             'books',
             'categories'));
+
+        
     }
+
 
     public function search(Request $request)
     {
