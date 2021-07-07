@@ -30,7 +30,7 @@ Route::get('/bookmarks',[\App\Http\Controllers\Site\BookmarkController::class, '
 Route::get('/bookmarks-count/',[\App\Http\Controllers\Site\SiteController::class, 'bookmarksCount']);//->name('bookmarks');
 //===================End bookmarks routes=============================
 
-Route::post('/book',[\App\Http\Controllers\BookController::class, 'store'])->name('books');
+
 
 
 //======================User routes===================================
@@ -75,11 +75,24 @@ Route::middleware('auth:web')->prefix('user')->name('user.')->group(function (){
     Route::get('/order-items/{order_id}/{count}',[\App\Http\Controllers\User\ProfileController::class,'showOrderItems'])->name('orderItemsList');
     Route::get('/bookmarks-list',[\App\Http\Controllers\User\ProfileController::class,'showBookmarks'])->name('bookmarks');
 });
+//========================End user Panel routes========================
 
 
 //=======================Contact us routes========================
 Route::get('/contactus', [\App\Http\Controllers\Site\MessageController::class,'index'])->name('contactUs');
 Route::post('/contactus/store', [\App\Http\Controllers\Site\MessageController::class,'store'])->name('messageStore');
+//=======================Contact us routes========================
+
+
+//===========================Book routes===========================
+Route::prefix('book')->name('book.')->group(function (){
+    Route::get('/',[\App\Http\Controllers\BookController::class,'index'])->name('booksList');
+
+
+    Route::post('/book',[\App\Http\Controllers\BookController::class, 'store'])->name('books');
+});
+//=======================End book routes===========================
+
 
 
 //Auth::routes();

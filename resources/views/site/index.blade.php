@@ -125,11 +125,11 @@
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    @if (session()->get('bookmark'))
-                        <div class="alert alert-success text-center">
-                            {{session()->get('bookmark')}}
-                        </div>
-                    @endif
+                        @if (session()->get('bookmark'))
+                            <div class="alert alert-success text-center">
+                                {{session()->get('bookmark')}}
+                            </div>
+                        @endif
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div id="tg-bestsellingbooksslider"
@@ -146,12 +146,14 @@
                                                                                alt="image description"></div>
                                             </div>
                                             @if(!\App\Models\Bookmark::where('book_id',$book->id)->first())
-                                            <a class="tg-btnaddtowishlist" href={{Route('addToBookmark',$book->id)}}>
-                                                <i class="icon-heart"></i>
-                                                <span>افزودن به علاقه‌مندی‌ها</span>
-                                            </a>
+                                                <a class="tg-btnaddtowishlist"
+                                                   href={{Route('addToBookmark',$book->id)}}>
+                                                    <i class="icon-heart"></i>
+                                                    <span>افزودن به علاقه‌مندی‌ها</span>
+                                                </a>
                                             @else
-                                                <a class="tg-btnaddtowishlist" href={{Route('removeBookmark',$book->id)}}>
+                                                <a class="tg-btnaddtowishlist"
+                                                   href={{Route('removeBookmark',$book->id)}}>
 
                                                     <span>پاک کردن از علاقه‌مندی‌ها</span>
                                                 </a>
@@ -358,8 +360,8 @@
                                 </div>
                                 <div class="tg-titlepluscounter">
                                     <h2>درام</h2>
-                                    <h3 data-from="0" data-to="6179213" data-speed="8000" data-refresh-interval="50">
-                                        6,179,213</h3>
+                                    <h3 data-from="0" data-to="{{$deram}}" data-speed="1" data-refresh-interval="50">
+                                        </h3>
                                 </div>
                             </div>
                             <div class="tg-collectioncounter tg-horror">
@@ -368,8 +370,8 @@
                                 </div>
                                 <div class="tg-titlepluscounter">
                                     <h2>جنایی</h2>
-                                    <h3 data-from="0" data-to="3121242" data-speed="8000" data-refresh-interval="50">
-                                        3,121,242</h3>
+                                    <h3 data-from="0" data-to="{{$jenayi}}" data-speed="1" data-refresh-interval="50">
+                                        </h3>
                                 </div>
                             </div>
                             <div class="tg-collectioncounter tg-romance">
@@ -378,8 +380,8 @@
                                 </div>
                                 <div class="tg-titlepluscounter">
                                     <h2>عاشقانه</h2>
-                                    <h3 data-from="0" data-to="2101012" data-speed="8000" data-refresh-interval="50">
-                                        2,101,012</h3>
+                                    <h3 data-from="0" data-to="{{$asheghane}}" data-speed="1" data-refresh-interval="50">
+                                        </h3>
                                 </div>
                             </div>
                             <div class="tg-collectioncounter tg-fashion">
@@ -388,8 +390,7 @@
                                 </div>
                                 <div class="tg-titlepluscounter">
                                     <h2>تاریخی</h2>
-                                    <h3 data-from="0" data-to="1158245" data-speed="8000" data-refresh-interval="50">
-                                        1,158,245</h3>
+                                    <h3 data-from="0" data-to="{{$tarikhi}}" data-speed="1" data-refresh-interval="50"></h3>
                                 </div>
                             </div>
                         </div>
@@ -409,7 +410,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="tg-sectionhead">
                             <h2><span>بهترین کتاب ها</span>کتاب های پیشنهادی</h2>
-{{--                            <a class="tg-btn" href="javascript:void(0);">مشاهده همه</a>--}}
+                            {{--                            <a class="tg-btn" href="javascript:void(0);">مشاهده همه</a>--}}
                         </div>
                     </div>
                     <div id="tg-pickedbyauthorslider" class="tg-pickedbyauthor tg-pickedbyauthorslider owl-carousel">
@@ -513,134 +514,17 @@
                         </div>
                     </div>
                     <div id="tg-authorsslider" class="tg-authors tg-authorsslider owl-carousel">
+                        //نویسندگان فعال فورایچ
                         <div class="item tg-author">
                             <figure><a href="javascript:void(0);"><img src="images/author/imag-03.jpg"
                                                                        alt="image description"></a></figure>
                             <div class="tg-authorcontent">
                                 <h2><a href="javascript:void(0);">جودی مورفی</a></h2>
                                 <span>21,658 کتاب منتشرشده</span>
-                                <ul class="tg-socialicons">
-                                    <li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a>
-                                    </li>
-                                    <li class="tg-twitter"><a href="javascript:void(0);"><i
-                                                class="fa fa-twitter"></i></a></li>
-                                    <li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a>
-                                    </li>
-                                </ul>
+
                             </div>
                         </div>
-                        <div class="item tg-author">
-                            <figure><a href="javascript:void(0);"><img src="images/author/imag-04.jpg"
-                                                                       alt="image description"></a></figure>
-                            <div class="tg-authorcontent">
-                                <h2><a href="javascript:void(0);">باک باگر</a></h2>
-                                <span>20,257 کتاب منتشرشده</span>
-                                <ul class="tg-socialicons">
-                                    <li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a>
-                                    </li>
-                                    <li class="tg-twitter"><a href="javascript:void(0);"><i
-                                                class="fa fa-twitter"></i></a></li>
-                                    <li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="item tg-author">
-                            <figure><a href="javascript:void(0);"><img src="images/author/imag-05.jpg"
-                                                                       alt="image description"></a></figure>
-                            <div class="tg-authorcontent">
-                                <h2><a href="javascript:void(0);">بوک شیپ و داتکو</a></h2>
-                                <span>15,686 کتاب منتشرشده</span>
-                                <ul class="tg-socialicons">
-                                    <li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a>
-                                    </li>
-                                    <li class="tg-twitter"><a href="javascript:void(0);"><i
-                                                class="fa fa-twitter"></i></a></li>
-                                    <li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="item tg-author">
-                            <figure><a href="javascript:void(0);"><img src="images/author/imag-06.jpg"
-                                                                       alt="image description"></a></figure>
-                            <div class="tg-authorcontent">
-                                <h2><a href="javascript:void(0);">الن گلیسون</a></h2>
-                                <span>12,435 کتاب منتشرشده</span>
-                                <ul class="tg-socialicons">
-                                    <li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a>
-                                    </li>
-                                    <li class="tg-twitter"><a href="javascript:void(0);"><i
-                                                class="fa fa-twitter"></i></a></li>
-                                    <li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="item tg-author">
-                            <figure><a href="javascript:void(0);"><img src="images/author/imag-07.jpg"
-                                                                       alt="image description"></a></figure>
-                            <div class="tg-authorcontent">
-                                <h2><a href="javascript:void(0);">خانه کتاب</a></h2>
-                                <span>15,953 کتاب منتشرشده</span>
-                                <ul class="tg-socialicons">
-                                    <li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a>
-                                    </li>
-                                    <li class="tg-twitter"><a href="javascript:void(0);"><i
-                                                class="fa fa-twitter"></i></a></li>
-                                    <li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="item tg-author">
-                            <figure><a href="javascript:void(0);"><img src="images/author/imag-08.jpg"
-                                                                       alt="image description"></a></figure>
-                            <div class="tg-authorcontent">
-                                <h2><a href="javascript:void(0);">لینی کلیمک</a></h2>
-                                <span>65,720 کتاب منتشرشده</span>
-                                <ul class="tg-socialicons">
-                                    <li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a>
-                                    </li>
-                                    <li class="tg-twitter"><a href="javascript:void(0);"><i
-                                                class="fa fa-twitter"></i></a></li>
-                                    <li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="item tg-author">
-                            <figure><a href="javascript:void(0);"><img src="images/author/imag-05.jpg"
-                                                                       alt="image description"></a></figure>
-                            <div class="tg-authorcontent">
-                                <h2><a href="javascript:void(0);">بوک شیپ و داتکو</a></h2>
-                                <span>15,686 کتاب منتشرشده</span>
-                                <ul class="tg-socialicons">
-                                    <li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a>
-                                    </li>
-                                    <li class="tg-twitter"><a href="javascript:void(0);"><i
-                                                class="fa fa-twitter"></i></a></li>
-                                    <li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="item tg-author">
-                            <figure><a href="javascript:void(0);"><img src="images/author/imag-06.jpg"
-                                                                       alt="image description"></a></figure>
-                            <div class="tg-authorcontent">
-                                <h2><a href="javascript:void(0);">الن گلیسون</a></h2>
-                                <span>12,435 کتاب منتشرشده</span>
-                                <ul class="tg-socialicons">
-                                    <li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a>
-                                    </li>
-                                    <li class="tg-twitter"><a href="javascript:void(0);"><i
-                                                class="fa fa-twitter"></i></a></li>
-                                    <li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
