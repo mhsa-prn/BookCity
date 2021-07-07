@@ -11,4 +11,37 @@ class Order extends Model
     const CANCELED = 2;
     const SENDING = 3;
     const DELIVERED = 4;
+
+
+    protected $appends = ['persian_status'];
+
+    // Add field to eloquent
+    public function getPersianStatusAttribute()
+    {
+        $message = '';
+
+        switch ($this->status) {
+            case self::PREPARING:
+                $message = 'در حال آماده سازی';
+                break;
+            case self::CANCELED:
+                $message = 'لغو شده';
+                break;
+            case self::SENDING:
+                $message = 'در حال ارسال';
+                break;
+            case self::DELIVERED:
+                $message = 'تحویل داده شده';
+                break;
+        }
+
+        return $message;
+    }
+
+
+    public function items()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
 }

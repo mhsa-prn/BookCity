@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
-    protected $fillable = ['title','description','author_id','price','image'];
+    protected $fillable = ['title', 'description', 'author_id', 'price', 'image'];
+
+  /*  public function order_items()
+    {
+        return $this->hasMany(OrderItem::class);
+    }*/
 }

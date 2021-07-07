@@ -72,6 +72,7 @@ Route::middleware('auth:web')->get('/test', function () {
 Route::middleware('auth:web')->prefix('user')->name('user.')->group(function (){
     Route::get('/profile',[\App\Http\Controllers\User\ProfileController::class,'showProfile'])->name('profile');
     Route::get('/orders-list',[\App\Http\Controllers\User\ProfileController::class,'showOrders'])->name('orders');
+    Route::get('/order-items/{order_id}/{count}',[\App\Http\Controllers\User\ProfileController::class,'showOrderItems'])->name('orderItemsList');
     Route::get('/bookmarks-list',[\App\Http\Controllers\User\ProfileController::class,'showBookmarks'])->name('bookmarks');
 });
 

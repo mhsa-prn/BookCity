@@ -1,28 +1,29 @@
 @extends('layouts.userTemplate')
 @section('user_body')
 
-        <!-- Page content-->
-        <div class="content-wrapper">
-            <div class="content-heading">لیست سفارشات</div>
-            <!-- First category table-->
-            <div class="card card-default">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th class="h4" style="width: 50%">سفارش ها</th>
-                        <th class="h4 text-center d-none d-lg-table-cell">وضعیت</th>
-                        <th class="h4 text-center d-none d-lg-table-cell">قیمت</th>
-                        <th class="h4 text-center d-none d-lg-table-cell">تاریخ سفارش</th>
+    <!-- Page content-->
+    <div class="content-wrapper">
+        <div class="content-heading">لیست سفارشات</div>
+        <!-- First category table-->
+        <div class="card card-default">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th class="h4" style="width: 50%">سفارش ها</th>
+                    <th class="h4 text-center d-none d-lg-table-cell">وضعیت</th>
+                    <th class="h4 text-center d-none d-lg-table-cell">قیمت</th>
+                    <th class="h4 text-center d-none d-lg-table-cell">تاریخ سفارش</th>
 
-                    </tr>
-                    </thead>
-                    <tbody>
+                </tr>
+                </thead>
+                <tbody>
 
-                    @foreach($orders as $order)
+                @foreach($orders as $order)
                     <tr>
                         <td>
                             <h4>
-                                <a href="default.htm">
+                                <a style="color: #77b748" href="order-items/{{$order->id}}/{{$count}}">
+
                                     <strong>سفارش شماره {{$count++}}</strong>
                                 </a>
                             </h4>
@@ -50,11 +51,11 @@
                             <strong>{{jdate($order->created_at)->format('%d %B %Y')}}</strong>
                         </td>
                     </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-            </div>
-
+                @endforeach
+                </tbody>
+            </table>
         </div>
+
+    </div>
 
 @endsection
