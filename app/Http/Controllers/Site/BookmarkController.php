@@ -44,9 +44,12 @@ class BookmarkController extends Controller
         return back();
     }
 
-    public function remove()
+    public function remove($book_id)
     {
-
+        $book=Bookmark::where('book_id',$book_id)->first();
+        if ($book)
+            $book->delete();
+        return back();
     }
 
 

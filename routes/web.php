@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [\App\Http\Controllers\Site\SiteController::class, 'index'])->name('home');
-Route::get('/contactus', [\App\Http\Controllers\Site\ContactUsController::class,'index'])->name('contactUs');
+
 
 Route::get('/search', [\App\Http\Controllers\Site\SiteController::class, 'search']);
 
@@ -24,7 +24,8 @@ Route::get('/authors',[\App\Http\Controllers\Site\AuthorController::class,'index
 
 
 //===================Bookmarks routes=============================
-Route::get('/bookmarks/{id}',[\App\Http\Controllers\Site\BookmarkController::class, 'add'])->name('addBookmark');
+Route::get('/bookmark/{id}',[\App\Http\Controllers\Site\BookmarkController::class, 'add'])->name('addToBookmark');
+Route::get('/bookmarks/{id}',[\App\Http\Controllers\Site\BookmarkController::class, 'remove'])->name('removeBookmark');
 Route::get('/bookmarks',[\App\Http\Controllers\Site\BookmarkController::class, 'index'])->name('bookmarks');
 Route::get('/bookmarks-count/',[\App\Http\Controllers\Site\SiteController::class, 'bookmarksCount']);//->name('bookmarks');
 //===================End bookmarks routes=============================
@@ -34,7 +35,7 @@ Route::post('/book',[\App\Http\Controllers\BookController::class, 'store'])->nam
 
 //======================User routes===================================
 Route::post('/users/register',[\App\Http\Controllers\Site\UserController::class,'register']);
-Route::get('/users/register',[\App\Http\Controllers\Site\UserController::class,'registerForm']);
+Route::get('/users/register',[\App\Http\Controllers\Site\UserController::class,'registerForm'])->name('register');
 
 Route::post('/users/login',[\App\Http\Controllers\Site\UserController::class,'login']);
 Route::get('/users/login',[\App\Http\Controllers\Site\UserController::class,'loginForm'])->name('login');
@@ -73,6 +74,11 @@ Route::middleware('auth:web')->prefix('user')->name('user.')->group(function (){
     Route::get('/orders-list',[\App\Http\Controllers\User\ProfileController::class,'showOrders'])->name('orders');
     Route::get('/bookmarks-list',[\App\Http\Controllers\User\ProfileController::class,'showBookmarks'])->name('bookmarks');
 });
+
+
+//=======================Contact us routes========================
+Route::get('/contactus', [\App\Http\Controllers\Site\MessageController::class,'index'])->name('contactUs');
+Route::post('/contactus/store', [\App\Http\Controllers\Site\MessageController::class,'store'])->name('messageStore');
 
 
 //Auth::routes();

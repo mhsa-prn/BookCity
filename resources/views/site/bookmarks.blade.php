@@ -48,14 +48,12 @@
                                     <div class="tg-authorcontent">
                                         <h2><a href="javascript:void(0);">{{$bookmarked_book->books->title}}</a></h2>
 
-                                        <ul class="tg-socialicons">
-                                            <li class="tg-facebook"><a href="javascript:void(0);"><i
-                                                        class="fa fa-facebook"></i></a></li>
-                                            <li class="tg-twitter"><a href="javascript:void(0);"><i
-                                                        class="fa fa-twitter"></i></a></li>
-                                            <li class="tg-linkedin"><a href="javascript:void(0);"><i
-                                                        class="fa fa-linkedin"></i></a></li>
+                                        <ul class="tg-addnav">
+                                            <li >
+                                                <a href={{Route('removeBookmark',$bookmarked_book->books->id)}} style="color: #77b748"> حذف نشان</a>
+                                            </li>
                                         </ul>
+
                                     </div>
                                 </div>
                             </div>

@@ -11,7 +11,7 @@
                     <div class="tg-innerbannercontent">
                         <h1>ارتباط با ما</h1>
                         <ol class="tg-breadcrumb">
-                            <li><a href="javascript:void(0);">خانه</a></li>
+                            <li><a href="{{route('home')}}">خانه</a></li>
                             <li class="tg-active">ارتباط با ما</li>
                         </ol>
                     </div>
@@ -34,6 +34,11 @@
                 <div class="row">
                     <div class="tg-contactus">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            @if (session()->get('storeMessage'))
+                                <div class="alert alert-success text-center">
+                                    {{session()->get('storeMessage')}}
+                                </div>
+                            @endif
                             <div class="tg-sectionhead">
                                 <h2><span>سلام</span>با ما در تماس باشید</h2>
                             </div>
@@ -42,25 +47,36 @@
                             <div id="tg-locationmap" class="tg-locationmap tg-map"></div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                            <form class="tg-formtheme tg-formcontactus">
+                            @if(count($errors)>0)
+                                <div class="col-md-6 alert alert-danger">
+                                    @foreach($errors->all() as $error)
+                                        <p>
+                                            {{$error}}
+                                        </p>
+                                    @endforeach
+                                </div>
+                            @else
+                            @endif
+                            <form class="tg-formtheme tg-formcontactus" method="post" action="{{route('messageStore')}}" >
+                                {{@csrf_field()}}
                                 <fieldset>
                                     <div class="form-group">
-                                        <input type="text" name="first-name" class="form-control" placeholder="نام * ">
+                                        <input type="text" name="first_name" class="form-control" placeholder="نام * ">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="last-name" class="form-control" placeholder=" نام خانوادگی * ">
+                                        <input type="text" name="last_name" class="form-control" placeholder=" نام خانوادگی * ">
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" name="email" class="form-control" placeholder=" نام خانوادگی * ">
+                                        <input type="text" name="email" class="form-control" placeholder=" ایمیل * ">
                                     </div>
                                     <div class="form-group">
                                         <input type="text" name="subject" class="form-control" placeholder=" موضوع * ">
                                     </div>
                                     <div class="form-group tg-hastextarea">
-                                        <textarea placeholder="نظر"></textarea>
+                                        <textarea name="message" placeholder="نظر"></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="tg-btn tg-active">ارسال</button>
+                                        <button type="submit" class="tg-btn tg-active" >ارسال</button>
                                     </div>
                                 </fieldset>
                             </form>
@@ -92,13 +108,7 @@
 											</span>
                                     </li>
                                 </ul>
-                                <ul class="tg-socialicons">
-                                    <li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-                                    <li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-                                    <li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-                                    <li class="tg-googleplus"><a href="javascript:void(0);"><i class="fa fa-google-plus"></i></a></li>
-                                    <li class="tg-rss"><a href="javascript:void(0);"><i class="fa fa-rss"></i></a></li>
-                                </ul>
+                                
                             </div>
                         </div>
                     </div>

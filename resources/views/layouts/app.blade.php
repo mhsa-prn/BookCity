@@ -59,12 +59,31 @@
                                 </a>
                             </li>
                         </ul>
-
+                        @if(auth()->check())
                         <div class="tg-userlogin">
-                            <figure><a href="javascript:void(0);"><img src="/images/users/img-01.jpg"
-                                                                       alt="image description"></a></figure>
-                            <span>سلام، ملانی</span>
+                            <a href="{{route('user.profile')}}">
+                            <span>سلام، {{$user_firstname}}</span>
+                            </a>
                         </div>
+                        @else
+                            <div>
+                            <ul class="tg-addnav">
+                                <li>
+                                    <a href={{Route('register')}}>
+
+                                        <em>ثبت نام</em>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href={{Route('login')}}>
+
+                                        <em>ورود</em>
+                                    </a>
+                                </li>
+                            </ul>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -886,17 +905,7 @@
 											</span>
                                     </li>
                                 </ul>
-                                <ul class="tg-socialicons">
-                                    <li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a>
-                                    </li>
-                                    <li class="tg-twitter"><a href="javascript:void(0);"><i
-                                                class="fa fa-twitter"></i></a></li>
-                                    <li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a>
-                                    </li>
-                                    <li class="tg-googleplus"><a href="javascript:void(0);"><i
-                                                class="fa fa-google-plus"></i></a></li>
-                                    <li class="tg-rss"><a href="javascript:void(0);"><i class="fa fa-rss"></i></a></li>
-                                </ul>
+
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">

@@ -79,6 +79,12 @@
                         <span data-localize="sidebar.heading.HEADER">منوی اصلی</span>
                     </li>
                     <li class=" ">
+                        <a href="{{route('home')}}" title="Dashboard" >
+                            <em class="icon-home"></em>
+                            <span>خانه</span>
+                        </a>
+                    </li>
+                    <li class=" ">
                         <a href="{{route('user.profile')}}" title="Dashboard" >
                             <em class="icon-user"></em>
                             <span>پروفایل</span>
@@ -93,7 +99,7 @@
                     </li>
 
                     <li class=" ">
-                        <a href="{{route('user.bookmarks')}}" title="Dashboard">
+                        <a href="{{route('bookmarks')}}" title="Dashboard">
                             <em class="icon-heart"></em>
                             <span>لیست علاقه‌مندی‌ها</span>
                         </a>

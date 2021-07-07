@@ -145,10 +145,17 @@
                                                 <div class="tg-backcover"><img src="{{$book->image}}"
                                                                                alt="image description"></div>
                                             </div>
-                                            <a class="tg-btnaddtowishlist" href={{Route('addBookmark',$book->id)}}>
+                                            @if(!\App\Models\Bookmark::where('book_id',$book->id)->first())
+                                            <a class="tg-btnaddtowishlist" href={{Route('addToBookmark',$book->id)}}>
                                                 <i class="icon-heart"></i>
                                                 <span>افزودن به علاقه‌مندی‌ها</span>
                                             </a>
+                                            @else
+                                                <a class="tg-btnaddtowishlist" href={{Route('removeBookmark',$book->id)}}>
+
+                                                    <span>پاک کردن از علاقه‌مندی‌ها</span>
+                                                </a>
+                                            @endif
                                         </figure>
                                         <div class="tg-postbookcontent">
                                             <ul class="tg-bookscategories">
