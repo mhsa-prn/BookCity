@@ -97,7 +97,7 @@ Route::prefix('book')->name('book.')->group(function (){
 
 //=======================Authors route==============================
 Route::prefix('author')->name('author.')->group(function () {
-    Route::get('/', [\App\Http\Controllers\AuthorController::class, 'index'])->name('authorsList');
+    Route::get('/', [\App\Http\Controllers\Site\AuthorController::class, 'index'])->name('authorsList');
 });
 
 

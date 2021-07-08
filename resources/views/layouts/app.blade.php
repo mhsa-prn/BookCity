@@ -799,7 +799,7 @@
                                         <a href={{Route('home')}}>خانه</a>
                                     </li>
                                     <li class="">
-                                        <a href="javascript:void(0);">نویسندگان</a>
+                                        <a href="{{route('author.authorsList')}}">نویسندگان</a>
                                         <ul class="sub-menu">
                                             <li><a href="authors.html">نویسندگان</a></li>
 
