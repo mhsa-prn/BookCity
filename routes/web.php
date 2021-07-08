@@ -24,7 +24,7 @@ Route::get('/authors',[\App\Http\Controllers\Site\AuthorController::class,'index
 
 
 //===================Bookmarks routes=============================
-Route::get('/bookmark/{id}',[\App\Http\Controllers\Site\BookmarkController::class, 'add'])->name('addToBookmark');
+Route::get('/bookmark/{id}',[\App\Http\Controllers\Site\BookmarkController::class, 'add'])->name('addToBookmark')->middleware('auth:web');
 Route::get('/bookmarks/{id}',[\App\Http\Controllers\Site\BookmarkController::class, 'remove'])->name('removeBookmark');
 Route::get('/bookmarks',[\App\Http\Controllers\Site\BookmarkController::class, 'index'])->name('bookmarks');
 Route::get('/bookmarks-count/',[\App\Http\Controllers\Site\SiteController::class, 'bookmarksCount']);//->name('bookmarks');
@@ -46,7 +46,7 @@ Route::get('/users/logout',[\App\Http\Controllers\Site\UserController::class,'lo
 
 
 //========================Cart routes==================================
-Route::get('/add-to-Cart/{id}', [\App\Http\Controllers\Site\CartController::class, 'addToCart']);
+Route::get('/add-to-Cart/{id}', [\App\Http\Controllers\Site\CartController::class, 'addToCart'])->middleware('auth:web');
 Route::get('/destroy-Cart', [\App\Http\Controllers\Site\CartController::class, 'destroyCart'])->name('destroyCart');
 Route::get('/cart',[\App\Http\Controllers\Site\CartController::class,'index'])->name('cart');
 Route::get('/carts/{item}',[\App\Http\Controllers\Site\CartController::class,'removeItem'])->name('removeItem');
@@ -87,12 +87,18 @@ Route::post('/contactus/store', [\App\Http\Controllers\Site\MessageController::c
 //===========================Book routes===========================
 Route::prefix('book')->name('book.')->group(function (){
     Route::get('/',[\App\Http\Controllers\BookController::class,'index'])->name('booksList');
+    Route::get('/show-categories',[\App\Http\Controllers\BookController::class,'showCategories'])->name('booksCategories');
 
 
     Route::post('/book',[\App\Http\Controllers\BookController::class, 'store'])->name('books');
 });
 //=======================End book routes===========================
 
+
+//=======================Authors route==============================
+Route::prefix('author')->name('author.')->group(function () {
+    Route::get('/', [\App\Http\Controllers\AuthorController::class, 'index'])->name('authorsList');
+});
 
 
 //Auth::routes();

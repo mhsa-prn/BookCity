@@ -805,21 +805,12 @@
 
                                         </ul>
                                     </li>
-                                    <li><a href="products.html">پرفروش ترین</a></li>
+                                    <li><a href={{route('book.booksList')}}>کتاب ها</a></li>
 
                                     <li><a href={{Route('contactUs')}}>ارتباط با ما</a></li>
 
 
-                                    <li class="menu-item-has-children current-menu-item">
-                                        <a href="javascript:void(0);"><i class="icon-menu"></i></a>
-                                        <ul class="sub-menu">
-                                            <li>
-                                                <a href="aboutus.html">محصولات</a>
-                                            </li>
-                                            <li><a href="aboutus.html">درباره ما</a></li>
 
-                                        </ul>
-                                    </li>
                                 </ul>
                             </div>
                         </nav>
