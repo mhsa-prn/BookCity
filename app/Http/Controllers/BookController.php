@@ -6,25 +6,35 @@ use App\Models\Book;
 use App\Models\Category;
 use App\Models\CategoryBook;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
-    public function store(Request $request)
+
+    public function showStoreBookForm()
     {
+        return view('storeBookForm');
+    }
+
+
+    public function storeBook(Request $request)
+    {
+
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+        }
+        else
+            $image=null;
+
         $books = new Book();
-
         $books->fill($request->all());
+        $file_name = md5(time()) . '.' . $image->getClientOriginalExtension();
+        Storage::putFileAs(
+            'public/books', $image, $file_name
+        );
 
-        $file = $request->file('image');
-
-        $file_name = md5(time()) . '.' . $file->getClientOriginalExtension();
-
-        $file->move('books', $file_name);
-
-        $file_address = '/books/' . $file_name;
-
-        $books->image = $file_address;
-
+        $books->image = "storage/books/".$file_name;
         $books->save();
 
     }

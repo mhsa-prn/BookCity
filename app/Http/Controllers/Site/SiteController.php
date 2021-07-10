@@ -11,6 +11,7 @@ use App\Models\Order;
 use App\Models\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use phpDocumentor\Reflection\DocBlock\Tags\Author;
 
 class SiteController extends Controller
@@ -66,5 +67,19 @@ class SiteController extends Controller
         $author->index();
     }
 
+
+    public function showUploadImageform()
+    {
+        return view('uploadImageForm');
+    }
+
+    public function uploadImage(Request $request)
+    {
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            Storage::disk('local')->put('public/my-images', $image);
+        }
+    }
 
 }

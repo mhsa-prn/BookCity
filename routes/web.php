@@ -88,9 +88,6 @@ Route::post('/contactus/store', [\App\Http\Controllers\Site\MessageController::c
 Route::prefix('book')->name('book.')->group(function (){
     Route::get('/',[\App\Http\Controllers\BookController::class,'index'])->name('booksList');
     Route::get('/show-categories',[\App\Http\Controllers\BookController::class,'showCategories'])->name('booksCategories');
-
-
-    Route::post('/book',[\App\Http\Controllers\BookController::class, 'store'])->name('books');
 });
 //=======================End book routes===========================
 
@@ -99,6 +96,20 @@ Route::prefix('book')->name('book.')->group(function (){
 Route::prefix('author')->name('author.')->group(function () {
     Route::get('/', [\App\Http\Controllers\Site\AuthorController::class, 'index'])->name('authorsList');
 });
+//=====================End authors list===========================
+
 
 
 //Auth::routes();
+
+
+Route::prefix('admin')->name('admin.')->group(function (){
+    Route::get('/upload-image',[\App\Http\Controllers\Site\SiteController::class,'showUploadImageform'])->name('uploadImageForm');
+    Route::post('/upload-image',[\App\Http\Controllers\Site\SiteController::class,'uploadImage'])->name('uploadImage');
+
+    Route::get('/store-book',[\App\Http\Controllers\BookController::class, 'showStoreBookForm'])->name('storeBookForm');
+    Route::post('/store-book',[\App\Http\Controllers\BookController::class, 'StoreBook'])->name('storeBook');
+
+    Route::get('/store-author',[\App\Http\Controllers\Site\AuthorController::class, 'showStoreAuthorForm'])->name('storeAuthorForm');
+    Route::post('/store-author',[\App\Http\Controllers\Site\AuthorController::class, 'StoreAuthor'])->name('storeAuthor');
+});

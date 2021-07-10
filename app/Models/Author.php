@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Author extends Model
 {
+    protected $fillable=[
+        'name',
+        'image'
+    ];
     use HasFactory;
 }
