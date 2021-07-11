@@ -34,10 +34,11 @@ class AppServiceProvider extends ServiceProvider
                 $user_firstname=$user->first_name;
             else
                 $user_firstname=null;
+            $picked_authors = \App\Models\Author::all()->take(3);
             $category_count=Category::count();
             $categories = Category::all();
             $bookmarks_count = Bookmark::where('user_id', auth()->id())->count();
-            $view->with(compact('categories', 'bookmarks_count','category_count','user_firstname'));
+            $view->with(compact('categories', 'bookmarks_count','category_count','user_firstname','picked_authors'));
         });
     }
 }

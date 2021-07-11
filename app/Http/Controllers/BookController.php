@@ -23,9 +23,8 @@ class BookController extends Controller
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-        }
-        else
-            $image=null;
+        } else
+            $image = null;
 
         $books = new Book();
         $books->fill($request->all());
@@ -34,21 +33,37 @@ class BookController extends Controller
             'public/books', $image, $file_name
         );
 
-        $books->image = "storage/books/".$file_name;
+        $books->image = "storage/books/" . $file_name;
         $books->save();
 
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $categories=Category::all();
-        $books=Book::all();
-        return view('book.index',compact('books','categories'));
+
+        // Many to Many Relation
+
+        $categories = Category::query();
+
+        $books = Book::query();
+
+        if ($request->has('category_id')) {
+
+            $books->whereHas('categories', function ($q) use ($request) {
+                $q->where('categories.id', $request->get('category_id'));
+            });
+        }
+
+        $books = $books->with(['categories', 'author'])->get();
+        //return $books;
+        $categories = $categories->with('books')->get();
+
+        return view('book.index', compact('categories', 'books'));
     }
 
     public function showCategories()
     {
-        $categories=Category::with('categoryBooks')->get();
+        $categories = Category::with('categoryBooks')->get();
 
         return $categories[0];
 //        $count=-1;

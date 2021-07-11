@@ -41,7 +41,6 @@ Route::post('/users/login',[\App\Http\Controllers\Site\UserController::class,'lo
 Route::get('/users/login',[\App\Http\Controllers\Site\UserController::class,'loginForm'])->name('login');
 
 Route::get('/users/logout',[\App\Http\Controllers\Site\UserController::class,'logout'])->name('logout');
-
 //======================End user routes================================
 
 
@@ -63,9 +62,9 @@ Route::get('/payment/verify',[\App\Http\Controllers\PaymentController::class, 'v
 
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::middleware('auth:web')->get('/test', function () {
-    dd('ok');
-});
+//Route::middleware('auth:web')->get('/test', function () {
+//    dd('ok');
+//});
 
 
 //========================User Panel routes========================
@@ -83,6 +82,12 @@ Route::get('/contactus', [\App\Http\Controllers\Site\MessageController::class,'i
 Route::post('/contactus/store', [\App\Http\Controllers\Site\MessageController::class,'store'])->name('messageStore');
 //=======================Contact us routes========================
 
+//===========================Site routes========================
+Route::get('/aboutus',[\App\Http\Controllers\Site\SiteController::class,'aboutUs'])->name('aboutUs');
+Route::get('/privacy',[\App\Http\Controllers\Site\SiteController::class,'privacy'])->name('privacy');
+Route::get('/affiliates',[\App\Http\Controllers\Site\SiteController::class,'affiliates'])->name('affiliates');
+Route::get('/goal',[\App\Http\Controllers\Site\SiteController::class,'goal'])->name('goal');
+//===========================End Site routes=====================
 
 //===========================Book routes===========================
 Route::prefix('book')->name('book.')->group(function (){

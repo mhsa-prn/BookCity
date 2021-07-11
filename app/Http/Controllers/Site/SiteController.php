@@ -35,18 +35,30 @@ class SiteController extends Controller
         $asheghane = CategoryBook::where('category_id', 3)->count();
         $tarikhi = CategoryBook::where('category_id', 4)->count();
 
+        $authors = \App\Models\Author::all();
+
 
         $category_counts = Category::with('books');
-        //$newest_books = Product::orderBy('id', 'DESC')->get();
+
+
+
+
+        $newest_books=Book::orderBy('id', 'DESC')->with('author')->take(3)->get();
+
+
+        $recommended_books = Book::whereBetween('id', [1, 5])->get();
 
         return view('site.index', compact('user_count', 'book_count',
+            'authors',
             'books',
             'categories',
             'order_count',
             'deram',
             'asheghane',
             'jenayi',
-            'tarikhi'));
+            'tarikhi',
+            'recommended_books',
+            'newest_books'));
 
 
     }
@@ -54,9 +66,9 @@ class SiteController extends Controller
 
     public function search(Request $request)
     {
-        $books = Book::where('title', 'like', "%" . $request->input('title') . "%")->get();
-
-        return view('site.search');
+        $books = Book::where('title', 'like', "%" . $request->input('title') . "%")->with('categories','author')->get();
+        //return $books;
+        return view('book.search', compact('books', 'request'));
     }
 
 
@@ -80,6 +92,26 @@ class SiteController extends Controller
             $image = $request->file('image');
             Storage::disk('local')->put('public/my-images', $image);
         }
+    }
+
+    public function aboutUs()
+    {
+        return view('site.aboutUs');
+    }
+
+    public function privacy()
+    {
+        return view('site.privacy');
+    }
+
+    public function affiliates()
+    {
+        return view('site.affiliates');
+    }
+
+    public function goal()
+    {
+        return view('site.goal');
     }
 
 }

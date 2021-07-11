@@ -60,28 +60,28 @@
                             </li>
                         </ul>
                         @if(auth()->check())
-                        <div class="tg-userlogin">
-                            <a href="{{route('user.profile')}}">
-                            <span>سلام، {{$user_firstname}}</span>
-                            </a>
-                        </div>
+                            <div class="tg-userlogin">
+                                <a href="{{route('user.profile')}}">
+                                    <span>سلام، {{$user_firstname}}</span>
+                                </a>
+                            </div>
                         @else
                             <div>
-                            <ul class="tg-addnav">
-                                <li>
-                                    <a href={{Route('register')}}>
+                                <ul class="tg-addnav" style="float: left!important;">
+                                    <li>
+                                        <a href={{Route('register')}}>
 
-                                        <em>ثبت نام</em>
-                                    </a>
-                                </li>
+                                            <em>ثبت نام</em>
+                                        </a>
+                                    </li>
 
-                                <li>
-                                    <a href={{Route('login')}}>
+                                    <li>
+                                        <a href={{Route('login')}}>
 
-                                        <em>ورود</em>
-                                    </a>
-                                </li>
-                            </ul>
+                                            <em>ورود</em>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         @endif
                     </div>
@@ -96,87 +96,68 @@
                                                                             alt="company name here"></a></strong>
 
 
-
                         @if(auth()->check())
-                        <div class="tg-wishlistandcart">
-                            <div class="dropdown tg-themedropdown tg-wishlistdropdown">
-                                <a href="{{route('bookmarks')}}" id="tg-wishlisst" class="tg-btnthemedropdown">
+                            <div class="tg-wishlistandcart">
+                                <div class="dropdown tg-themedropdown tg-wishlistdropdown">
+                                    <a href="{{route('bookmarks')}}" id="tg-wishlisst" class="tg-btnthemedropdown">
 
-                                    <span class="tg-themebadge">{{$bookmarks_count}}</span>
-                                    <i class="icon-heart"></i>
-                                    <span>علاقه‌مندی‌ها</span>
-                                </a>
+                                        <span class="tg-themebadge">{{$bookmarks_count}}</span>
+                                        <i class="icon-heart"></i>
+                                        <span>علاقه‌مندی‌ها</span>
+                                    </a>
 
-                            </div>
-                            <div class="dropdown tg-themedropdown tg-minicartdropdown">
-                                <a href="javascript:void(0);" id="tg-minicart" class="tg-btnthemedropdown"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                </div>
+                                <div class="dropdown tg-themedropdown tg-minicartdropdown">
+                                    <a href="javascript:void(0);" id="tg-minicart" class="tg-btnthemedropdown"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span
                                         class="tg-themebadge">{{session()->get('my_cart_total_info') ? session()->get('my_cart_total_info')['total_count'] :  0}}</span>
-                                    <i class="icon-cart"></i>
-                                    <span>{{session()->get('my_cart_total_info') ? session()->get('my_cart_total_info')['total_price'] :  0}} تومان</span>
-                                </a>
-                                <div class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-minicart">
-                                    <div class="tg-minicartbody">
-                                        @if(session()->get('my_cart'))
-                                            @foreach(session()->get('my_cart') as $Cart)
-                                                <div class="tg-minicarproduct">
-                                                    <figure>
-                                                        <img src={{$Cart['image']}} alt="image" width="70"
-                                                             height="70">
-                                                    </figure>
-                                                    <div class="tg-minicarproductdata">
-                                                        <h5><a href="javascript:void(0);">{{$Cart['title']}}
-                                                                (تعداد: {{$Cart['count']}})</a></h5>
-                                                        <h6><a href="javascript:void(0);">{{$Cart['price']}} تومان</a>
-                                                        </h6>
+                                        <i class="icon-cart"></i>
+                                        <span>{{session()->get('my_cart_total_info') ? session()->get('my_cart_total_info')['total_price'] :  0}} تومان</span>
+                                    </a>
+                                    <div class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-minicart">
+                                        <div class="tg-minicartbody">
+                                            @if(session()->get('my_cart'))
+                                                @foreach(session()->get('my_cart') as $Cart)
+                                                    <div class="tg-minicarproduct">
+                                                        <figure>
+                                                            <img src={{$Cart['image']}} alt="image" width="70"
+                                                                 height="70">
+                                                        </figure>
+                                                        <div class="tg-minicarproductdata">
+                                                            <h5><a href="javascript:void(0);">{{$Cart['title']}}
+                                                                    (تعداد: {{$Cart['count']}})</a></h5>
+                                                            <h6><a href="javascript:void(0);">{{$Cart['price']}}
+                                                                    تومان</a>
+                                                            </h6>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            @endforeach
-                                        @endif
+                                                @endforeach
+                                            @endif
 
-                                    </div>
-                                    <div class="tg-minicartfoot">
-                                        <a class="tg-btnemptycart" href={{Route('destroyCart')}}>
-                                            <i class="fa fa-trash-o"></i>
-                                            <span>پاک کردن سبد</span>
-                                        </a>
-                                        <span class="tg-subtotal">جمع کل: <strong>{{session()->get('my_cart_total_info') ? session()->get('my_cart_total_info')['total_price'] :  0}} تومان</strong></span>
-                                        <div class="tg-btns">
-                                            <a class="tg-btn tg-active" href={{route('cart')}}>مشاهده سبد خرید</a>
+                                        </div>
+                                        <div class="tg-minicartfoot">
+                                            <a class="tg-btnemptycart" href={{Route('destroyCart')}}>
+                                                <i class="fa fa-trash-o"></i>
+                                                <span>پاک کردن سبد</span>
+                                            </a>
+                                            <span class="tg-subtotal">جمع کل: <strong>{{session()->get('my_cart_total_info') ? session()->get('my_cart_total_info')['total_price'] :  0}} تومان</strong></span>
+                                            <div class="tg-btns">
+                                                <a class="tg-btn tg-active" href={{route('cart')}}>مشاهده سبد خرید</a>
 
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         @endif
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                         <div class="tg-searchbox">
                             <form action="/search" class="tg-formtheme tg-formsearch">
                                 <fieldset>
                                     <input type="text" name="title" class="typeahead form-control"
-                                           placeholder=" یک عنوان، نویسنده، کلیدواژه، آی‌اس‌بی‌ان جستجو کنید...">
+                                           placeholder=" عنوان کتاب را وارد کنید...">
                                     <button type="submit"><i class="icon-magnifier"></i></button>
                                 </fieldset>
 
@@ -185,30 +166,6 @@
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         </div>
@@ -235,564 +192,14 @@
                                             <ul class="tg-themetabnav">
                                                 @foreach($categories as $category)
                                                     <li role="presentation" class="">
-                                                        <a href="#artandphotography" aria-controls="artandphotography"
-                                                           role="tab" data-toggle="tab">
+                                                        <a href="book?category_id={{$category->id}}"
+                                                           role="tab">
                                                             {{$category->title}}
                                                         </a>
                                                     </li>
                                                 @endforeach
                                             </ul>
 
-                                            <div class="tab-content tg-themetabcontent">
-                                                <div role="tabpanel" class="tab-pane active" id="artandphotography">
-                                                    <ul>
-                                                        <li>
-                                                            <figure><img src="/images/img-01.png"
-                                                                         alt="image description"></figure>
-                                                            <div class="tg-textbox">
-                                                                <h3>بیشتر از<span>{{$category_count}}</span>کالکشن کتاب</h3>
-                                                                <div class="tg-description">
-                                                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-                                                                        صنعت چاپ و متون بلکه روزنامه و مجله در ستون و
-                                                                        سطرآنچنان که لازم است</p>
-                                                                </div>
-
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div role="tabpanel" class="tab-pane" id="biography">
-                                                    <ul>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>تاریخ</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="products.html">تولید سادگی نامفهوم</a></li>
-                                                                <li><a href="products.html">تمرینی</a></li>
-                                                                <li><a href="products.html">چاپگرها و متون </a></li>
-                                                                <li><a href="products.html">روزنامه و مجله </a></li>
-                                                                <li><a href="products.html">جراید </a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="products.html">مشاهده همه</a>
-                                                        </li>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>معماری</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="products.html">سخت و مشکل</a></li>
-                                                                <li><a href="products.html">پیشرفته و شفاف</a></li>
-                                                                <li><a href="products.html">خاطره سازی و خاطره بازی</a>
-                                                                </li>
-                                                                <li><a href="products.html">بولدوزر بویز</a></li>
-                                                                <li><a href="products.html">بساز با برو</a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="products.html">مشاهده همه</a>
-                                                        </li>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>هنری</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="products.html">لورم ایپسوم</a></li>
-                                                                <li><a href="products.html">تولید تصادفی متن</a></li>
-                                                                <li><a href="products.html">دگرگونی صنعت</a></li>
-                                                                <li><a href="products.html">پیشرفت نرم افزار</a></li>
-                                                                <li><a href="products.html">کمترین هزینه</a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="products.html">مشاهده همه</a>
-                                                        </li>
-                                                    </ul>
-                                                    <ul>
-                                                        <li>
-                                                            <figure><img src="/images/img-01.png"
-                                                                         alt="image description"></figure>
-                                                            <div class="tg-textbox">
-                                                                <h3>بیشتر از<span>12,0657,53</span>کالکشن کتاب</h3>
-                                                                <div class="tg-description">
-                                                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-                                                                        صنعت چاپ و متون بلکه روزنامه و مجله در ستون و
-                                                                        سطرآنچنان که لازم است</p>
-                                                                </div>
-                                                                <a class="tg-btn" href="products.html">مشاهده همه</a>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div role="tabpanel" class="tab-pane" id="childrensbook">
-                                                    <ul>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>معماری</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="products.html">سخت و مشکل</a></li>
-                                                                <li><a href="products.html">پیشرفته و شفاف</a></li>
-                                                                <li><a href="products.html">خاطره سازی و خاطره بازی</a>
-                                                                </li>
-                                                                <li><a href="products.html">بولدوزر بویز</a></li>
-                                                                <li><a href="products.html">بساز با برو</a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="products.html">مشاهده همه</a>
-                                                        </li>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>هنری</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="products.html">لورم ایپسوم</a></li>
-                                                                <li><a href="products.html">تولید تصادفی متن</a></li>
-                                                                <li><a href="products.html">دگرگونی صنعت</a></li>
-                                                                <li><a href="products.html">پیشرفت نرم افزار</a></li>
-                                                                <li><a href="products.html">کمترین هزینه</a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="products.html">مشاهده همه</a>
-                                                        </li>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>تاریخ</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="products.html">تولید سادگی نامفهوم</a></li>
-                                                                <li><a href="products.html">تمرینی</a></li>
-                                                                <li><a href="products.html">چاپگرها و متون </a></li>
-                                                                <li><a href="products.html">روزنامه و مجله </a></li>
-                                                                <li><a href="products.html">جراید </a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="products.html">مشاهده همه</a>
-                                                        </li>
-                                                    </ul>
-                                                    <ul>
-                                                        <li>
-                                                            <figure><img src="/images/img-01.png"
-                                                                         alt="image description"></figure>
-                                                            <div class="tg-textbox">
-                                                                <h3>بیشتر از<span>12,0657,53</span>کالکشن کتاب</h3>
-                                                                <div class="tg-description">
-                                                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-                                                                        صنعت چاپ و متون بلکه روزنامه و مجله در ستون و
-                                                                        سطرآنچنان که لازم است</p>
-                                                                </div>
-                                                                <a class="tg-btn" href="products.html">مشاهده همه</a>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div role="tabpanel" class="tab-pane" id="craftandhobbies">
-                                                    <ul>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>تاریخ</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="products.html">تولید سادگی نامفهوم</a></li>
-                                                                <li><a href="products.html">تمرینی</a></li>
-                                                                <li><a href="products.html">چاپگرها و متون </a></li>
-                                                                <li><a href="products.html">روزنامه و مجله </a></li>
-                                                                <li><a href="products.html">جراید </a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="products.html">مشاهده همه</a>
-                                                        </li>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>معماری</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="products.html">سخت و مشکل</a></li>
-                                                                <li><a href="products.html">پیشرفته و شفاف</a></li>
-                                                                <li><a href="products.html">خاطره سازی و خاطره بازی</a>
-                                                                </li>
-                                                                <li><a href="products.html">بولدوزر بویز</a></li>
-                                                                <li><a href="products.html">بساز با برو</a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="products.html">مشاهده همه</a>
-                                                        </li>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>هنری</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="products.html">لورم ایپسوم</a></li>
-                                                                <li><a href="products.html">تولید تصادفی متن</a></li>
-                                                                <li><a href="products.html">دگرگونی صنعت</a></li>
-                                                                <li><a href="products.html">پیشرفت نرم افزار</a></li>
-                                                                <li><a href="products.html">کمترین هزینه</a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="products.html">مشاهده همه</a>
-                                                        </li>
-                                                    </ul>
-                                                    <ul>
-                                                        <li>
-                                                            <figure><img src="/images/img-01.png"
-                                                                         alt="image description"></figure>
-                                                            <div class="tg-textbox">
-                                                                <h3>بیشتر از<span>12,0657,53</span>کالکشن کتاب</h3>
-                                                                <div class="tg-description">
-                                                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-                                                                        صنعت چاپ و متون بلکه روزنامه و مجله در ستون و
-                                                                        سطرآنچنان که لازم است</p>
-                                                                </div>
-                                                                <a class="tg-btn" href="products.html">مشاهده همه</a>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div role="tabpanel" class="tab-pane" id="crimethriller">
-                                                    <ul>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>معماری</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="products.html">سخت و مشکل</a></li>
-                                                                <li><a href="products.html">پیشرفته و شفاف</a></li>
-                                                                <li><a href="products.html">خاطره سازی و خاطره بازی</a>
-                                                                </li>
-                                                                <li><a href="products.html">بولدوزر بویز</a></li>
-                                                                <li><a href="products.html">بساز با برو</a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="products.html">مشاهده همه</a>
-                                                        </li>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>هنری</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="products.html">لورم ایپسوم</a></li>
-                                                                <li><a href="products.html">تولید تصادفی متن</a></li>
-                                                                <li><a href="products.html">دگرگونی صنعت</a></li>
-                                                                <li><a href="products.html">پیشرفت نرم افزار</a></li>
-                                                                <li><a href="products.html">کمترین هزینه</a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="products.html">مشاهده همه</a>
-                                                        </li>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>تاریخ</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="products.html">تولید سادگی نامفهوم</a></li>
-                                                                <li><a href="products.html">تمرینی</a></li>
-                                                                <li><a href="products.html">چاپگرها و متون </a></li>
-                                                                <li><a href="products.html">روزنامه و مجله </a></li>
-                                                                <li><a href="products.html">جراید </a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="products.html">مشاهده همه</a>
-                                                        </li>
-                                                    </ul>
-                                                    <ul>
-                                                        <li>
-                                                            <figure><img src="/images/img-01.png"
-                                                                         alt="image description"></figure>
-                                                            <div class="tg-textbox">
-                                                                <h3>بیشتر از<span>12,0657,53</span>کالکشن کتاب</h3>
-                                                                <div class="tg-description">
-                                                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-                                                                        صنعت چاپ و متون بلکه روزنامه و مجله در ستون و
-                                                                        سطرآنچنان که لازم است</p>
-                                                                </div>
-                                                                <a class="tg-btn" href="products.html">مشاهده همه</a>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div role="tabpanel" class="tab-pane" id="fantasyhorror">
-                                                    <ul>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>تاریخ</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="products.html">تولید سادگی نامفهوم</a></li>
-                                                                <li><a href="products.html">تمرینی</a></li>
-                                                                <li><a href="products.html">چاپگرها و متون </a></li>
-                                                                <li><a href="products.html">روزنامه و مجله </a></li>
-                                                                <li><a href="products.html">جراید </a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="products.html">مشاهده همه</a>
-                                                        </li>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>معماری</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="products.html">سخت و مشکل</a></li>
-                                                                <li><a href="products.html">پیشرفته و شفاف</a></li>
-                                                                <li><a href="products.html">خاطره سازی و خاطره بازی</a>
-                                                                </li>
-                                                                <li><a href="products.html">بولدوزر بویز</a></li>
-                                                                <li><a href="products.html">بساز با برو</a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="products.html">مشاهده همه</a>
-                                                        </li>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>هنری</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="products.html">لورم ایپسوم</a></li>
-                                                                <li><a href="products.html">تولید تصادفی متن</a></li>
-                                                                <li><a href="products.html">دگرگونی صنعت</a></li>
-                                                                <li><a href="products.html">پیشرفت نرم افزار</a></li>
-                                                                <li><a href="products.html">کمترین هزینه</a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="products.html">مشاهده همه</a>
-                                                        </li>
-                                                    </ul>
-                                                    <ul>
-                                                        <li>
-                                                            <figure><img src="/images/img-01.png"
-                                                                         alt="image description"></figure>
-                                                            <div class="tg-textbox">
-                                                                <h3>بیشتر از<span>12,0657,53</span>کالکشن کتاب</h3>
-                                                                <div class="tg-description">
-                                                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-                                                                        صنعت چاپ و متون بلکه روزنامه و مجله در ستون و
-                                                                        سطرآنچنان که لازم است</p>
-                                                                </div>
-                                                                <a class="tg-btn" href="products.html">مشاهده همه</a>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div role="tabpanel" class="tab-pane" id="fiction">
-                                                    <ul>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>معماری</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="products.html">سخت و مشکل</a></li>
-                                                                <li><a href="products.html">پیشرفته و شفاف</a></li>
-                                                                <li><a href="products.html">خاطره سازی و خاطره بازی</a>
-                                                                </li>
-                                                                <li><a href="products.html">بولدوزر بویز</a></li>
-                                                                <li><a href="products.html">بساز با برو</a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="products.html">مشاهده همه</a>
-                                                        </li>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>هنری</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="products.html">لورم ایپسوم</a></li>
-                                                                <li><a href="products.html">تولید تصادفی متن</a></li>
-                                                                <li><a href="products.html">دگرگونی صنعت</a></li>
-                                                                <li><a href="products.html">پیشرفت نرم افزار</a></li>
-                                                                <li><a href="products.html">کمترین هزینه</a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="products.html">مشاهده همه</a>
-                                                        </li>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>تاریخ</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="products.html">تولید سادگی نامفهوم</a></li>
-                                                                <li><a href="products.html">تمرینی</a></li>
-                                                                <li><a href="products.html">چاپگرها و متون </a></li>
-                                                                <li><a href="products.html">روزنامه و مجله </a></li>
-                                                                <li><a href="products.html">جراید </a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="products.html">مشاهده همه</a>
-                                                        </li>
-                                                    </ul>
-                                                    <ul>
-                                                        <li>
-                                                            <figure><img src="/images/img-01.png"
-                                                                         alt="image description"></figure>
-                                                            <div class="tg-textbox">
-                                                                <h3>بیشتر از<span>12,0657,53</span>کالکشن کتاب</h3>
-                                                                <div class="tg-description">
-                                                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-                                                                        صنعت چاپ و متون بلکه روزنامه و مجله در ستون و
-                                                                        سطرآنچنان که لازم است</p>
-                                                                </div>
-                                                                <a class="tg-btn" href="products.html">مشاهده همه</a>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div role="tabpanel" class="tab-pane" id="fooddrink">
-                                                    <ul>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>تاریخ</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="products.html">تولید سادگی نامفهوم</a></li>
-                                                                <li><a href="products.html">تمرینی</a></li>
-                                                                <li><a href="products.html">چاپگرها و متون </a></li>
-                                                                <li><a href="products.html">روزنامه و مجله </a></li>
-                                                                <li><a href="products.html">جراید </a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="products.html">مشاهده همه</a>
-                                                        </li>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>معماری</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="products.html">سخت و مشکل</a></li>
-                                                                <li><a href="products.html">پیشرفته و شفاف</a></li>
-                                                                <li><a href="products.html">خاطره سازی و خاطره بازی</a>
-                                                                </li>
-                                                                <li><a href="products.html">بولدوزر بویز</a></li>
-                                                                <li><a href="products.html">بساز با برو</a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="products.html">مشاهده همه</a>
-                                                        </li>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>هنری</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="products.html">لورم ایپسوم</a></li>
-                                                                <li><a href="products.html">تولید تصادفی متن</a></li>
-                                                                <li><a href="products.html">دگرگونی صنعت</a></li>
-                                                                <li><a href="products.html">پیشرفت نرم افزار</a></li>
-                                                                <li><a href="products.html">کمترین هزینه</a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="products.html">مشاهده همه</a>
-                                                        </li>
-                                                    </ul>
-                                                    <ul>
-                                                        <li>
-                                                            <figure><img src="/images/img-01.png"
-                                                                         alt="image description"></figure>
-                                                            <div class="tg-textbox">
-                                                                <h3>بیشتر از<span>12,0657,53</span>کالکشن کتاب</h3>
-                                                                <div class="tg-description">
-                                                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-                                                                        صنعت چاپ و متون بلکه روزنامه و مجله در ستون و
-                                                                        سطرآنچنان که لازم است</p>
-                                                                </div>
-                                                                <a class="tg-btn" href="products.html">مشاهده همه</a>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div role="tabpanel" class="tab-pane" id="graphicanimemanga">
-                                                    <ul>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>معماری</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="products.html">سخت و مشکل</a></li>
-                                                                <li><a href="products.html">پیشرفته و شفاف</a></li>
-                                                                <li><a href="products.html">خاطره سازی و خاطره بازی</a>
-                                                                </li>
-                                                                <li><a href="products.html">بولدوزر بویز</a></li>
-                                                                <li><a href="products.html">بساز با برو</a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="products.html">مشاهده همه</a>
-                                                        </li>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>هنری</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="products.html">لورم ایپسوم</a></li>
-                                                                <li><a href="products.html">تولید تصادفی متن</a></li>
-                                                                <li><a href="products.html">دگرگونی صنعت</a></li>
-                                                                <li><a href="products.html">پیشرفت نرم افزار</a></li>
-                                                                <li><a href="products.html">کمترین هزینه</a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="products.html">مشاهده همه</a>
-                                                        </li>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>تاریخ</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="products.html">تولید سادگی نامفهوم</a></li>
-                                                                <li><a href="products.html">تمرینی</a></li>
-                                                                <li><a href="products.html">چاپگرها و متون </a></li>
-                                                                <li><a href="products.html">روزنامه و مجله </a></li>
-                                                                <li><a href="products.html">جراید </a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="products.html">مشاهده همه</a>
-                                                        </li>
-                                                    </ul>
-                                                    <ul>
-                                                        <li>
-                                                            <figure><img src="/images/img-01.png"
-                                                                         alt="image description"></figure>
-                                                            <div class="tg-textbox">
-                                                                <h3>بیشتر از<span>12,0657,53</span>کالکشن کتاب</h3>
-                                                                <div class="tg-description">
-                                                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-                                                                        صنعت چاپ و متون بلکه روزنامه و مجله در ستون و
-                                                                        سطرآنچنان که لازم است</p>
-                                                                </div>
-                                                                <a class="tg-btn" href="products.html">مشاهده همه</a>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div role="tabpanel" class="tab-pane" id="sciencefiction">
-                                                    <ul>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>تاریخ</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="products.html">تولید سادگی نامفهوم</a></li>
-                                                                <li><a href="products.html">تمرینی</a></li>
-                                                                <li><a href="products.html">چاپگرها و متون </a></li>
-                                                                <li><a href="products.html">روزنامه و مجله </a></li>
-                                                                <li><a href="products.html">جراید </a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="products.html">مشاهده همه</a>
-                                                        </li>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>معماری</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="products.html">سخت و مشکل</a></li>
-                                                                <li><a href="products.html">پیشرفته و شفاف</a></li>
-                                                                <li><a href="products.html">خاطره سازی و خاطره بازی</a>
-                                                                </li>
-                                                                <li><a href="products.html">بولدوزر بویز</a></li>
-                                                                <li><a href="products.html">بساز با برو</a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="products.html">مشاهده همه</a>
-                                                        </li>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>هنری</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="products.html">لورم ایپسوم</a></li>
-                                                                <li><a href="products.html">تولید تصادفی متن</a></li>
-                                                                <li><a href="products.html">دگرگونی صنعت</a></li>
-                                                                <li><a href="products.html">پیشرفت نرم افزار</a></li>
-                                                                <li><a href="products.html">کمترین هزینه</a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="products.html">مشاهده همه</a>
-                                                        </li>
-                                                    </ul>
-                                                    <ul>
-                                                        <li>
-                                                            <figure><img src="/images/img-01.png"
-                                                                         alt="image description"></figure>
-                                                            <div class="tg-textbox">
-                                                                <h3>بیشتر از<span>12,0657,53</span>کالکشن کتاب</h3>
-                                                                <div class="tg-description">
-                                                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-                                                                        صنعت چاپ و متون بلکه روزنامه و مجله در ستون و
-                                                                        سطرآنچنان که لازم است</p>
-                                                                </div>
-                                                                <a class="tg-btn" href="products.html">مشاهده همه</a>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
                                         </div>
                                     </li>
                                     <li class="">
@@ -808,8 +215,7 @@
                                     <li><a href={{route('book.booksList')}}>کتاب ها</a></li>
 
                                     <li><a href={{Route('contactUs')}}>ارتباط با ما</a></li>
-
-
+                                    <li><a href={{Route('aboutUs')}}>درباره ما</a></li>
 
                                 </ul>
                             </div>
@@ -906,15 +312,13 @@
                                 </div>
                                 <div class="tg-widgetcontent">
                                     <ul>
-                                        <li><a href="javascript:void(0);">شرایط استفاده</a></li>
-                                        <li><a href="javascript:void(0);">شرایط برگشت</a></li>
-                                        <li><a href="javascript:void(0);">حریم شخصی</a></li>
+                                        <li><a href={{Route('privacy')}}>حریم شخصی</a></li>
                                         <li><a href={{Route('contactUs')}}>ارتباط با ما</a></li>
-                                        <li><a href="javascript:void(0);">شرکت‌های وابسته</a></li>
-                                        <li><a href="javascript:void(0);">هدف و بینش</a></li>
+                                        <li><a href={{Route('affiliates')}}>شرکت‌های وابسته</a></li>
+                                        <li><a href={{Route('goal')}}>هدف و بینش</a></li>
                                     </ul>
                                     <ul>
-                                        <li><a href="javascript:void(0);">داستان ما</a></li>
+                                        <li><a href={{Route('aboutUs')}}>داستان ما</a></li>
 
                                     </ul>
                                 </div>
@@ -927,33 +331,16 @@
                                 </div>
                                 <div class="tg-widgetcontent">
                                     <ul>
+                                        @foreach($picked_authors as $picked_author)
                                         <li>
-                                            <figure><a href="javascript:void(0);"><img src="/images/author/imag-09.jpg"
-                                                                                       alt="image description"></a>
+                                            <figure><a href="javascript:void(0);"><img width="50px" height="50px" src="{{$picked_author->image}}" alt="image"></a>
                                             </figure>
                                             <div class="tg-authornamebooks">
-                                                <h4><a href="javascript:void(0);">جودی مورفی</a></h4>
-                                                <p>21,658 کتاب منتشرشده</p>
+                                                <h4><a href="javascript:void(0);">{{$picked_author->name}}</a></h4>
+                                                <p>{{$picked_author->published_books}} کتاب منتشرشده</p>
                                             </div>
                                         </li>
-                                        <li>
-                                            <figure><a href="javascript:void(0);"><img src="/images/author/imag-10.jpg"
-                                                                                       alt="image description"></a>
-                                            </figure>
-                                            <div class="tg-authornamebooks">
-                                                <h4><a href="javascript:void(0);">شان هولمز</a></h4>
-                                                <p>20,257 کتاب منتشرشده</p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <figure><a href="javascript:void(0);"><img src="/images/author/imag-11.jpg"
-                                                                                       alt="image description"></a>
-                                            </figure>
-                                            <div class="tg-authornamebooks">
-                                                <h4><a href="javascript:void(0);">کاترین کالبوستون</a></h4>
-                                                <p>15,686 کتاب منتشرشده</p>
-                                            </div>
-                                        </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>

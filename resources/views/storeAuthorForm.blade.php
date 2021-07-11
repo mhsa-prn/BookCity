@@ -7,7 +7,6 @@
             <div class="container">
                 <div class="row">
                     <div class="tg-contactus">
-
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 
                             <form class="tg-formtheme tg-formcontactus" method="post"
