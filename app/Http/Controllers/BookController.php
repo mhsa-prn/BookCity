@@ -71,4 +71,16 @@ class BookController extends Controller
 //            return $category->categories;
 //        }
     }
+
+    public function showDetails($id)
+    {
+        $book=Book::with(['categories', 'author'])->where('id',$id)->get();
+
+//        return $book;
+
+        $categories = Category::query();
+        $categories = $categories->with('books')->get();
+
+        return view ('book.bookDetails',compact('categories','book'));
+    }
 }

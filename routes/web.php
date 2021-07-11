@@ -93,6 +93,7 @@ Route::get('/goal',[\App\Http\Controllers\Site\SiteController::class,'goal'])->n
 Route::prefix('book')->name('book.')->group(function (){
     Route::get('/',[\App\Http\Controllers\BookController::class,'index'])->name('booksList');
     Route::get('/show-categories',[\App\Http\Controllers\BookController::class,'showCategories'])->name('booksCategories');
+    Route::get('/show-details/{id}',[\App\Http\Controllers\BookController::class,'showDetails'])->name('bookDetail');
 });
 //=======================End book routes===========================
 

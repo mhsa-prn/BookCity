@@ -52,7 +52,7 @@
                                                     <div class="tg-themetagbox"><span class="tg-themetag">فروش</span>
                                                     </div>
                                                     <div class="tg-booktitle">
-                                                        <h3><a href="javascript:void(0);">{{$book->title}}</a></h3>
+                                                        <h3><a href="{{route('book.bookDetail',$book->id)}}">{{$book->title}}</a></h3>
                                                     </div>
                                                     <span class="tg-bookwriter">توسط: <a href="javascript:void(0);">{{$book->author->name}}</a></span>
 
@@ -84,7 +84,7 @@
                                     <ul>
                                         @foreach($categories as $category)
                                             <li>
-                                                <a href="?category_id={{$category->id}}"><span>{{$category->title}}</span><em>
+                                                <a href=c><span>{{$category->title}}</span><em>
                                                         {{count($category->books)}}
                                                     </em></a></li>
                                         @endforeach

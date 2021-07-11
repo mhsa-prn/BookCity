@@ -65,14 +65,14 @@
 
 
                                         <td>
-                                            <div class="input-group bootstrap-touchspin"><span class="input-group-btn"><a
-                                                        class="btn btn-default bootstrap-touchspin-down"
-                                                        href="{{route('decreaseCartCount',$item['id'])}}">-</a></span><span
-                                                    class="input-group-addon bootstrap-touchspin-prefix"
+                                            <div class="input-group bootstrap-touchspin">
+                                                <span class="input-group-btn">
+                                                    <a class="btn btn-default bootstrap-touchspin-down"
+                                                        href="{{route('decreaseCartCount',$item['id'])}}">-</a></span>
+                                                <span class="input-group-addon bootstrap-touchspin-prefix"
                                                     style="display: none;"></span><input type="text" name=""
-                                                                                         value={{$item['count']}} class="input-qty
-                                                                                         form-control text-center"
-                                                style="display: block;">
+                                                                                         value="{{$item['count']}}" class="input-qty
+                                                                                         form-control text-center" style="display: block;">
                                                 <span class="input-group-addon bootstrap-touchspin-postfix"
                                                       style="display: none;"></span><span class="input-group-btn"><a
                                                         class="btn btn-default bootstrap-touchspin-up"
