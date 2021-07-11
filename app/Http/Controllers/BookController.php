@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\CategoryBook;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Morilog\Jalali\Jalalian;
 
 class BookController extends Controller
 {
@@ -19,8 +20,6 @@ class BookController extends Controller
 
     public function storeBook(Request $request)
     {
-
-
         if ($request->hasFile('image')) {
             $image = $request->file('image');
         } else
@@ -34,6 +33,7 @@ class BookController extends Controller
         );
 
         $books->image = "storage/books/" . $file_name;
+        $books->published_date = Jalalian::forge($request->published_date);
         $books->save();
 
     }

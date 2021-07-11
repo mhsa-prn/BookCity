@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
-    protected $fillable = ['title', 'description', 'author_id', 'price', 'image'];
+    protected $fillable = ['title', 'description', 'author_id', 'price', 'image','pages','published_date','publisher','language'];
 
     /*  public function order_items()
       {

@@ -61,6 +61,7 @@
                                                 <span class="input-group-btn">
                                                     <a class="btn btn-default bootstrap-touchspin-down"
                                                        href="{{session()->get('my_cart') ? route('decreaseCartCount',$book[0]->id) : ""}}">-</a></span>
+
                                                         <span class="input-group-addon bootstrap-touchspin-prefix"
                                                               style="display: none;"></span><input type="text" name=""
                                                                                                    value="{{session()->get('my_cart') ? session()->get('my_cart')[$book[0]->id]['count'] : 0}}"
@@ -103,11 +104,10 @@
                                                     <h2>جزییات</h2>
                                                 </div>
                                                 <ul class="tg-productinfo">
-                                                    <li><span>صفخات:</span><span>528 صفحات</span></li>
-                                                    <li><span>ابعاد:</span><span>153 x 234 x 43mm | 758g</span></li>
-                                                    <li><span>تاریخ انتشار:</span><span>27 مهر 1399</span></li>
-                                                    <li><span>انتشارات:</span><span>سوزان اورلاندو</span></li>
-                                                    <li><span>زیان:</span><span>انگلیسی</span></li>
+                                                    <li><span>صفحات:</span><span>{{$book[0]->pages}} صفحات</span></li>
+                                                    <li><span>تاریخ انتشار:</span><span>{{jdate($book[0]->pages)->format('%d %B %Y')}}</span></li>
+                                                    <li><span>انتشارات:</span><span>{{$book[0]->publisher}}</span></li>
+                                                    <li><span>زبان:</span><span>{{$book[0]->language}}</span></li>
 
                                                 </ul>
 

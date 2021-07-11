@@ -28,6 +28,24 @@
                                     <div class="form-group">
                                         <input type="file" name="image" class="form-control" placeholder=" Image * ">
                                     </div>
+
+
+
+                                    <div class="form-group">
+                                        <input type="text" name="pages" class="form-control" placeholder=" pages ">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="date" name="published_date" class="form-control" placeholder=" published_date ">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="publisher" class="form-control" placeholder=" publisher ">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="language" class="form-control" placeholder=" language ">
+                                    </div>
+
+
+
                                     <div class="form-group tg-hastextarea">
                                         <textarea name="description" placeholder="Description"></textarea>
                                     </div>
