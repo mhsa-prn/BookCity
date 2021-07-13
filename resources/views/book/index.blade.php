@@ -18,8 +18,8 @@
                                             <div class="tg-postbook">
                                                 <figure class="tg-featureimg">
                                                     <div class="tg-bookimg">
-                                                        <div class="tg-frontcover"><img src={{$book->image}} alt="image
-                                                                                        description">
+                                                        <div class="tg-frontcover"><img
+                                                                src={{$book->image}} alt="image">
                                                         </div>
                                                         <div class="tg-backcover"><img src="images/books/img-02.jpg"
                                                                                        alt="image description"></div>
@@ -52,9 +52,12 @@
                                                     <div class="tg-themetagbox"><span class="tg-themetag">فروش</span>
                                                     </div>
                                                     <div class="tg-booktitle">
-                                                        <h3><a href="{{route('book.bookDetail',$book->id)}}">{{$book->title}}</a></h3>
+                                                        <h3>
+                                                            <a href="{{route('book.bookDetail',$book->id)}}">{{$book->title}}</a>
+                                                        </h3>
                                                     </div>
-                                                    <span class="tg-bookwriter">توسط: <a href="javascript:void(0);">{{$book->author->name}}</a></span>
+                                                    <span class="tg-bookwriter">توسط: <a
+                                                            href="javascript:void(0);">{{$book->author->name}}</a></span>
 
 
                                                     <span class="tg-bookprice">
@@ -84,7 +87,7 @@
                                     <ul>
                                         @foreach($categories as $category)
                                             <li>
-                                                <a href=c><span>{{$category->title}}</span><em>
+                                                <a href="/book?category_id={{$category->id}}"><span>{{$category->title}}</span><em>
                                                         {{count($category->books)}}
                                                     </em></a></li>
                                         @endforeach
@@ -92,59 +95,7 @@
                                 </div>
                             </div>
 
-                            <div class="tg-widget tg-widgetblogers">
-                                <div class="tg-widgettitle">
-                                    <h3>برترین نویسندگان</h3>
-                                </div>
-                                <div class="tg-widgetcontent">
-                                    <ul>
-                                        <li>
-                                            <div class="tg-author">
-                                                <figure><a href="javascript:void(0);"><img
-                                                            src="images/author/imag-03.jpg" alt="image description"></a>
-                                                </figure>
-                                                <div class="tg-authorcontent">
-                                                    <h2><a href="javascript:void(0);">جودی مورفی</a></h2>
-                                                    <span>21,658 کتاب منتشرشده</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="tg-author">
-                                                <figure><a href="javascript:void(0);"><img
-                                                            src="images/author/imag-04.jpg" alt="image description"></a>
-                                                </figure>
-                                                <div class="tg-authorcontent">
-                                                    <h2><a href="javascript:void(0);">جودی مورفی</a></h2>
-                                                    <span>21,658 کتاب منتشرشده</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="tg-author">
-                                                <figure><a href="javascript:void(0);"><img
-                                                            src="images/author/imag-05.jpg" alt="image description"></a>
-                                                </figure>
-                                                <div class="tg-authorcontent">
-                                                    <h2><a href="javascript:void(0);">جودی مورفی</a></h2>
-                                                    <span>21,658 کتاب منتشرشده</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="tg-author">
-                                                <figure><a href="javascript:void(0);"><img
-                                                            src="images/author/imag-06.jpg" alt="image description"></a>
-                                                </figure>
-                                                <div class="tg-authorcontent">
-                                                    <h2><a href="javascript:void(0);">جودی مورفی</a></h2>
-                                                    <span>21,658 کتاب منتشرشده</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+
                         </aside>
                     </div>
                 </div>

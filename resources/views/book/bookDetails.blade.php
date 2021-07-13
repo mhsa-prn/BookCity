@@ -39,7 +39,7 @@
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                             <div class="tg-postbook">
-                                                <figure class="tg-featureimg"><img src="{{$book[0]->image}}"
+                                                <figure class="tg-featureimg"><img src="/{{$book[0]->image}}"
                                                                                    alt="imagujkihyuoik"></figure>
                                                 <div class="tg-postbookcontent">
 														<span class="tg-bookprice">
@@ -62,9 +62,10 @@
                                                     <a class="btn btn-default bootstrap-touchspin-down"
                                                        href="{{session()->get('my_cart') ? route('decreaseCartCount',$book[0]->id) : ""}}">-</a></span>
 
+{{--{{dd(session()->get('my_cart'))}}--}}
                                                         <span class="input-group-addon bootstrap-touchspin-prefix"
                                                               style="display: none;"></span><input type="text" name=""
-                                                                                                   value="{{session()->get('my_cart') ? session()->get('my_cart')[$book[0]->id]['count'] : 0}}"
+                                                                                                   value="{{isset(session()->get('my_cart')[$book[0]->id]) ? session()->get('my_cart')[$book[0]->id]['count'] : 0}}"
                                                                                                    class="input-qty
                                                                                          form-control text-center"
                                                                                                    style="display: block;">
@@ -97,15 +98,15 @@
                                                 <span class="tg-bookwriter">توسط: <a
                                                         href="javascript:void(0);">{{$book[0]->author->name}}</a></span>
 
-                                                <div class="tg-description">
-                                                    <p>{{$book[0]->description}}</p>
+                                                <div class="tg-description text-justify">
+                                                    <p >{{$book[0]->description}}</p>
                                                 </div>
                                                 <div class="tg-sectionhead">
                                                     <h2>جزییات</h2>
                                                 </div>
                                                 <ul class="tg-productinfo">
-                                                    <li><span>صفحات:</span><span>{{$book[0]->pages}} صفحات</span></li>
-                                                    <li><span>تاریخ انتشار:</span><span>{{jdate($book[0]->pages)->format('%d %B %Y')}}</span></li>
+                                                    <li><span>صفحات:</span><span>{{$book[0]->pages}} </span></li>
+                                                    <li><span>تاریخ انتشار:</span><span>{{$book[0]->published_date}}</span></li>
                                                     <li><span>انتشارات:</span><span>{{$book[0]->publisher}}</span></li>
                                                     <li><span>زبان:</span><span>{{$book[0]->language}}</span></li>
 

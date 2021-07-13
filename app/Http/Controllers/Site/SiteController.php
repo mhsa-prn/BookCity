@@ -8,9 +8,12 @@ use App\Models\Book;
 use App\Models\Category;
 use App\Models\CategoryBook;
 use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\Payment;
 use App\Models\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use phpDocumentor\Reflection\DocBlock\Tags\Author;
 
@@ -41,12 +44,41 @@ class SiteController extends Controller
         $category_counts = Category::with('books');
 
 
-
-
-        $newest_books=Book::orderBy('id', 'DESC')->with('author')->take(3)->get();
+        $newest_books = Book::orderBy('id', 'DESC')->with('author')->take(3)->get();
 
 
         $recommended_books = Book::whereBetween('id', [1, 5])->get();
+
+        //پر فروش ترین ها
+
+        //TODO : start
+        $order_items = OrderItem::whereHas('order', function ($q) {
+            $q->whereHas('payments', function ($q) {
+                $q->where('payments.status', Payment::SUCCESS);
+            });
+        })->with('book')->get();
+
+        // لیست کتاب ها به ترتیب تعداد order_item * count
+        $result = [];
+
+        foreach ($order_items as $order_item) {
+            $result[$order_item->book_id][] = [
+                'count' => $order_item->count
+            ];
+        }
+
+        $r = [];
+        foreach ($result as $book_id => $value) {
+            $r[$book_id] = array_sum(array_column($value, 'count'));;
+        }
+
+        $best_sellers = [];
+
+        foreach ($r as $book_id => $count) {
+            $best_sellers[] = Book::find($book_id);
+        }
+
+        //TODO :end
 
         return view('site.index', compact('user_count', 'book_count',
             'authors',
@@ -58,7 +90,7 @@ class SiteController extends Controller
             'jenayi',
             'tarikhi',
             'recommended_books',
-            'newest_books'));
+            'newest_books', 'best_sellers'));
 
 
     }
@@ -66,7 +98,7 @@ class SiteController extends Controller
 
     public function search(Request $request)
     {
-        $books = Book::where('title', 'like', "%" . $request->input('title') . "%")->with('categories','author')->get();
+        $books = Book::where('title', 'like', "%" . $request->input('title') . "%")->with('categories', 'author')->get();
         //return $books;
         return view('book.search', compact('books', 'request'));
     }
@@ -113,5 +145,4 @@ class SiteController extends Controller
     {
         return view('site.goal');
     }
-
 }

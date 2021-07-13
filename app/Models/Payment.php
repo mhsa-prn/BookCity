@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Payment extends Model
 {
-    use HasFactory;
+    const SUCCESS = 1;
+    const PENDING = 2;
+    const FAILURE = 0;
 }

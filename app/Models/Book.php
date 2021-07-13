@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
-    protected $fillable = ['title', 'description', 'author_id', 'price', 'image','pages','published_date','publisher','language'];
+    protected $fillable = ['title', 'description', 'author_id', 'price', 'image', 'pages', 'published_date', 'publisher', 'language'];
 
     /*  public function order_items()
       {
@@ -29,5 +29,9 @@ class Book extends Model
 
     }
 
+    public function order_items()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
 
 }

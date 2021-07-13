@@ -13,20 +13,21 @@
                         <div class="col-xs-12 col-sm-12 col-md-10 col-md-push-1 col-lg-8 col-lg-push-2">
                             <div class="tg-slidercontent">
                                 <figure class="tg-authorimg"><a href="javascript:void(0);">
-                                        <img src={{$newest_book->image}} alt="image">
+                                        <img width="100px" height="100 px" src={{$newest_book->image}} alt="image">
                                     </a>
                                 </figure>
                                 <h1>{{$newest_book->title}}</h1>
-                                <h2>آخرین اثر منتشر شده از {{$newest_book->author->name}}</h2>
-                                <div class="tg-description"><p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
-                                        کاربردهای متنوع با هدف
-                                        بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و
-                                        آینده
-                                        شناخت فراوان جامعه و متخصصان را می طلبد</p>
+                                <h2>آخرین اثر منتشر شده: از {{$newest_book->author->name}}</h2>
+                                <div class="tg-description">
+                                    <span>صفحه</span>
+                                    <span>
+                                         {{$newest_book->pages}}
+
+                                    </span>
                                 </div>
                                 <div class="tg-btns">
-                                    <a class="tg-btn" href="javascript:void(0);">بیشتر بخوانید</a>
-                                    <a class="tg-btn" href="javascript:void(0);">خرید</a>
+                                    <a class="tg-btn" href="{{route('book.bookDetail',$newest_book->id)}}">بیشتر بخوانید</a>
+                                    <a class="tg-btn" href="/add-to-Cart/{{$newest_book->id}}">خرید</a>
                                 </div>
                             </div>
                         </div>
@@ -100,8 +101,6 @@
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="tg-sectionhead">
                             <h2><span>به انتخاب مردم</span>پرفروش‌ترین‌ها</h2>
-
-                            <a class="tg-btn" href="javascript:void(0);">مشاهده همه</a>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -115,47 +114,43 @@
                         <div id="tg-bestsellingbooksslider"
                              class="tg-bestsellingbooksslider tg-bestsellingbooks owl-carousel">
 
-                            @foreach($books as $book)
+                            @foreach($best_sellers as $best_seller)
                                 <div class="item">
                                     <div class="tg-postbook">
                                         <figure class="tg-featureimg">
                                             <div class="tg-bookimg">
-                                                <div class="tg-frontcover"><img src="{{$book->image}}"
+                                                <div class="tg-frontcover"><img src="{{$best_seller->image}}"
                                                                                 alt="image description"></div>
-                                                <div class="tg-backcover"><img src="{{$book->image}}"
+                                                <div class="tg-backcover"><img src="{{$best_seller->image}}"
                                                                                alt="image description"></div>
                                             </div>
-                                            @if(!\App\Models\Bookmark::where('book_id',$book->id)->first())
+                                            @if(!\App\Models\Bookmark::where('book_id',$best_seller->id)->first())
                                                 <a class="tg-btnaddtowishlist"
-                                                   href={{Route('addToBookmark',$book->id)}}>
+                                                   href={{Route('addToBookmark',$best_seller->id)}}>
                                                     <i class="icon-heart"></i>
                                                     <span>افزودن به علاقه‌مندی‌ها</span>
                                                 </a>
                                             @else
                                                 <a class="tg-btnaddtowishlist"
-                                                   href={{Route('removeBookmark',$book->id)}}>
+                                                   href={{Route('removeBookmark',$best_seller->id)}}>
 
                                                     <span>پاک کردن از علاقه‌مندی‌ها</span>
                                                 </a>
                                             @endif
                                         </figure>
                                         <div class="tg-postbookcontent">
-                                            <ul class="tg-bookscategories">
-                                                <li><a href="javascript:void(0);">ماجراجویی</a></li>
-                                                <li><a href="javascript:void(0);">سرگرم‌کننده</a></li>
-                                            </ul>
+
                                             <div class="tg-themetagbox"><span class="tg-themetag">فروش</span></div>
                                             <div class="tg-booktitle">
-                                                <h3><a href="javascript:void(0);">{{$book->title}}</a></h3>
+                                                <h3><a href="{{route('book.bookDetail',$best_seller->id)}}">{{$best_seller->title}}</a></h3>
                                             </div>
-                                            <span class="tg-bookwriter">توسط: <a
-                                                    href="javascript:void(0);">آنجلا گانینگ</a></span>
+
                                             </span></span>
                                             <span class="tg-bookprice">
-												<ins>{{$book->price}} تومان</ins>
+												<ins>{{$best_seller->price}} تومان</ins>
 
 											</span>
-                                            <a class="tg-btn tg-btnstyletwo" href="/add-to-Cart/{{$book->id}}">
+                                            <a class="tg-btn tg-btnstyletwo" href="/add-to-Cart/{{$best_seller->id}}">
                                                 <i class="fa fa-shopping-Cart"></i>
                                                 <em>افزودن به سبدخرید</em>
                                             </a>
@@ -174,37 +169,7 @@
         <!--************************************
                 Featured Item Start
         *************************************-->
-        <section class="tg-bglight tg-haslayout">
-            <div class="container">
-                <div class="row">
-                    <div class="tg-featureditm">
-                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 hidden-sm hidden-xs">
-                            <figure><img src="images/img-02.png" alt="image description"></figure>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                            <div class="tg-featureditmcontent">
-                                <div class="tg-themetagbox"><span class="tg-themetag">جدیدترین‌ها</span></div>
-                                <div class="tg-booktitle">
-                                    <h3><a href="javascript:void(0);">چیزهایی که راجع به طراحی فلت باید دونست </a></h3>
-                                </div>
-                                <span class="tg-bookwriter">توسط: <a href="javascript:void(0);">فرح شکوفا</a></span>
-                                <span class="tg-stars"><span></span></span>
-                                <div class="tg-priceandbtn">
-										<span class="tg-bookprice">
-											<ins>230 تومان</ins>
-											<del>302 تومان</del>
-										</span>
-                                    <a class="tg-btn tg-btnstyletwo tg-active" href="/add-to-Cart/{{$book->id}}">
-                                        <i class="fa fa-shopping-Cart"></i>
-                                        <em>افزودن به سبدخرید</em>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+
         <!--************************************
                 Featured Item End
         *************************************-->
