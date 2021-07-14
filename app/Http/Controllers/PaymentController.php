@@ -38,6 +38,7 @@ class PaymentController extends Controller
     {
 
         $status = $request->get('Status');
+//        dd($status);
         $authority = $request->get('Authority');
 
         // get cart session
@@ -46,7 +47,13 @@ class PaymentController extends Controller
         $session_total = session()->get('my_cart_total_info');
         // store cart session to orders table
         $order = new Order();
-        $order->status = Order::PREPARING;
+
+        if($status=='OK'){
+            $order->status = Order::PREPARING;
+        }
+        else
+            $order->status = Order::CANCELED;
+
         $order->amount = $session_total['total_price'];
         $order->user_id = auth()->id();
 
@@ -69,7 +76,7 @@ class PaymentController extends Controller
         $payment = new Payment();
         $payment->order_id = $order->id;
         $payment->authority = $authority;
-        $payment->status = $request->get('Status') == 'OK' ? 1 : 0;
+        $payment->status = $request->get('Status') == 'OK' ? 1 : 2;
         $payment->save();
 
         Cart::destroy();

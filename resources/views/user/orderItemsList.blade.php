@@ -27,7 +27,7 @@
                             @if($factor->status==1)
                                 <div class="alert-success">در حال آماده سازی</div>
                             @elseif($factor->status==2)
-                                <div class="alert-danger">لغو شده</div>
+                                <div class="alert-danger">پرداخت ناموفق/لغو شده</div>
                             @elseif($factor->status==3)
                                 <div class="alert-primary">در حال ارسال</div>
                             @elseif($factor->status==4)
@@ -65,7 +65,7 @@
                 <tr>
                     <td>
                         <h4>
-                            <a style="color: #77b748" href="default.htm">
+                            <a style="color: #77b748"  href="/book/show-details/{{$item->book->id}}">
                                 {{$item->book->title}}
                             </a>
                         </h4>

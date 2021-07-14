@@ -44,10 +44,10 @@
                         @foreach($authors as $author)
                             <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
                                 <div class="tg-author">
-                                    <figure><a href="javascript:void(0);"><img src={{$author->image}}
-                                                                               alt="image description"></a></figure>
+                                    <figure><img src={{$author->image}}
+                                                                               alt="imagedescription"></figure>
                                     <div class="tg-authorcontent">
-                                        <h2><a href="javascript:void(0);">{{$author->name}}</a></h2>
+                                        <h2>{{$author->name}}</h2>
                                         <span>{{$author->published_books}} کتاب منتشرشده</span>
                                     </div>
                                 </div>

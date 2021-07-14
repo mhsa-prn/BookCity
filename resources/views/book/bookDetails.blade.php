@@ -65,7 +65,7 @@
 {{--{{dd(session()->get('my_cart'))}}--}}
                                                         <span class="input-group-addon bootstrap-touchspin-prefix"
                                                               style="display: none;"></span><input type="text" name=""
-                                                                                                   value="{{isset(session()->get('my_cart')[$book[0]->id]) ? session()->get('my_cart')[$book[0]->id]['count'] : 0}}"
+                                                                                                   value="{{isset(session()->get('my_cart')[$book[0]->id]) ? session()->get('my_cart')[$book[0]->id]['count'] : "خالی"}}"
                                                                                                    class="input-qty
                                                                                          form-control text-center"
                                                                                                    style="display: block;">
@@ -108,7 +108,7 @@
                                                     <li><span>صفحات:</span><span>{{$book[0]->pages}} </span></li>
                                                     <li><span>تاریخ انتشار:</span><span>{{$book[0]->published_date}}</span></li>
                                                     <li><span>انتشارات:</span><span>{{$book[0]->publisher}}</span></li>
-                                                    <li><span>زبان:</span><span>{{$book[0]->language}}</span></li>
+                                                    <li><span>زبان اصلی:</span><span>{{$book[0]->language}}</span></li>
 
                                                 </ul>
 

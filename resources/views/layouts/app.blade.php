@@ -121,11 +121,11 @@
                                                 @foreach(session()->get('my_cart') as $Cart)
                                                     <div class="tg-minicarproduct">
                                                         <figure>
-                                                            <img src={{$Cart['image']}} alt="image" width="70"
+                                                            <img src="/{{$Cart['image']}}" alt="image" width="70"
                                                                  height="70">
                                                         </figure>
                                                         <div class="tg-minicarproductdata">
-                                                            <h5><a href="javascript:void(0);">{{$Cart['title']}}
+                                                            <h5><a href="/book/show-details/{{$Cart['id']}}">{{$Cart['title']}}
                                                                     (تعداد: {{$Cart['count']}})</a></h5>
                                                             <h6><a href="javascript:void(0);">{{$Cart['price']}}
                                                                     تومان</a>
@@ -333,10 +333,10 @@
                                     <ul>
                                         @foreach($picked_authors as $picked_author)
                                         <li>
-                                            <figure><a href="javascript:void(0);"><img width="50px" height="50px" src="{{$picked_author->image}}" alt="image"></a>
+                                            <figure><img width="50px" height="50px" src="{{$picked_author->image}}" alt="image">
                                             </figure>
                                             <div class="tg-authornamebooks">
-                                                <h4><a href="javascript:void(0);">{{$picked_author->name}}</a></h4>
+                                                <h4>{{$picked_author->name}}</h4>
                                                 <p>{{$picked_author->published_books}} کتاب منتشرشده</p>
                                             </div>
                                         </li>

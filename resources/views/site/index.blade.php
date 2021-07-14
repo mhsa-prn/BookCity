@@ -17,7 +17,7 @@
                                     </a>
                                 </figure>
                                 <h1>{{$newest_book->title}}</h1>
-                                <h2>آخرین اثر منتشر شده: از {{$newest_book->author->name}}</h2>
+                                <h2>آخرین اثر منتشر شده از: {{$newest_book->author->name}}</h2>
                                 <div class="tg-description">
                                     <span>صفحه</span>
                                     <span>
@@ -360,10 +360,10 @@
 
                         @foreach($authors as $author)
                             <div class="item tg-author">
-                                <figure><a href="javascript:void(0);"><img src={{$author->image}}
-                                            alt="image description"></a></figure>
+                                <figure><img src={{$author->image}}
+                                            alt="image description"></figure>
                                 <div class="tg-authorcontent">
-                                    <h2><a href="javascript:void(0);">{{$author->name}}</a></h2>
+                                    <h2>{{$author->name}}</h2>
                                     <span style="direction: rtl"> {{$author->published_books}} کتاب منتشر شده   </span>
 
                                 </div>

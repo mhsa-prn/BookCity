@@ -7,23 +7,23 @@
         <fieldset>
             <div class="form-group">
                 نام:
-                <input type="text" name="first_name" class="form-control col-xs-2 disabled" placeholder="{{$user->first_name}}"
-                       value="{{old('first_name')}}">
+                <input type="text" name="first_name" class="form-control col-xs-2 disabled" disabled value="{{$user->first_name}}"
+                       >
             </div>
             <div class="form-group">
                 نام خانوادگی:
                 <input type="text" name="last_name" class="form-control disabled"
-                       placeholder="{{$user->last_name}}" value="{{old('last_name')}}">
+                       disabled value="{{$user->last_name}}" >
             </div>
             <div class="form-group">
                 نام کاربری:
                 <input type="text" name="username" class="form-control disabled"
-                       placeholder="{{$user->username}}" value="{{old('username')}}">
+                       disabled value="{{$user->username}}" >
             </div>
             <div class="form-group">
                 ایمیل:
-                <input type="text" name="email" class="form-control disabled" placeholder="{{$user->email}}"
-                       value="{{old('email')}}">
+                <input type="text" name="email" class="form-control disabled" disabled value="{{$user->email}}">
+
             </div>
         </fieldset>
     </form>

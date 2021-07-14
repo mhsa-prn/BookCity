@@ -25,7 +25,7 @@ class Order extends Model
                 $message = 'در حال آماده سازی';
                 break;
             case self::CANCELED:
-                $message = 'لغو شده';
+                $message = 'پرداخت ناموفق';
                 break;
             case self::SENDING:
                 $message = 'در حال ارسال';

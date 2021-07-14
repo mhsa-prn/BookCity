@@ -78,6 +78,7 @@ class SiteController extends Controller
             $best_sellers[] = Book::find($book_id);
         }
 
+
         //TODO :end
 
         return view('site.index', compact('user_count', 'book_count',
