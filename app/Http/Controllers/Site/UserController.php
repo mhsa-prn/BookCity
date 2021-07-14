@@ -67,6 +67,8 @@ class UserController extends Controller
     public function logout()
     {
         auth()->logout();
+        session()->forget('my_cart');
+        session()->forget('my_cart_total_info');
         return back();
     }
 

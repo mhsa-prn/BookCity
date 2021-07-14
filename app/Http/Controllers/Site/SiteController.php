@@ -47,7 +47,7 @@ class SiteController extends Controller
         $newest_books = Book::orderBy('id', 'DESC')->with('author')->take(3)->get();
 
 
-        $recommended_books = Book::whereBetween('id', [1, 5])->get();
+        $recommended_books = Book::take(5)->get();
 
         //پر فروش ترین ها
 

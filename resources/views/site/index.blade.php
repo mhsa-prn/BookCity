@@ -19,11 +19,8 @@
                                 <h1>{{$newest_book->title}}</h1>
                                 <h2>آخرین اثر منتشر شده از: {{$newest_book->author->name}}</h2>
                                 <div class="tg-description">
-                                    <span>صفحه</span>
-                                    <span>
-                                         {{$newest_book->pages}}
+                                    <span>  </span>
 
-                                    </span>
                                 </div>
                                 <div class="tg-btns">
                                     <a class="tg-btn" href="{{route('book.bookDetail',$newest_book->id)}}">بیشتر بخوانید</a>

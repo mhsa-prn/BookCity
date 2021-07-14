@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderItem;
@@ -72,6 +73,11 @@ class PaymentController extends Controller
             $order_items->save();
 
         }
+
+        // update sell_count in books table
+//        foreach ($session as $item){
+////            Book::fin
+
 
         $payment = new Payment();
         $payment->order_id = $order->id;
